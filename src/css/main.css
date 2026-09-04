@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Fontes variáveis servidas localmente.
+ *
+ * Ficheiros esperados em src/fonts/ (não incluídos neste scaffold —
+ * descarregar as fontes variáveis .woff2 do Google Fonts / Fontsource
+ * e colocar aqui com estes nomes, ou ajustar os caminhos abaixo):
+ *
+ *   src/fonts/fraunces-variable.woff2   (Fraunces, licença OFL)
+ *   src/fonts/inter-variable.woff2      (Inter, licença OFL)
+ *
+ * Escolhas de fonte também placeholder — ver nota em tailwind.config.js.
+ */
+@layer base {
+  @font-face {
+    font-family: 'Fraunces Variable';
+    src: url('../fonts/fraunces-variable.woff2') format('woff2-variations');
+    font-weight: 300 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Inter Variable';
+    src: url('../fonts/inter-variable.woff2') format('woff2-variations');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface text-ink font-sans antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display text-ink;
+  }
+
+  ::selection {
+    @apply bg-primary-200 text-ink;
+  }
+
+  /* Respeitar preferência de movimento reduzido nas animações discretas do site */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Container consistente para o conteúdo das secções */
+  .container-site {
+    @apply mx-auto w-full max-w-7xl px-6 lg:px-8;
+  }
+
+  /* Fade-in ao scroll — ativado via IntersectionObserver em src/js/main.js.
+     Elementos com esta classe começam invisíveis e sobem ligeiramente;
+     a classe .is-visible é adicionada por JS quando entram no viewport. */
+  .fade-in-up {
+    @apply translate-y-3 opacity-0 transition duration-250 ease-out;
+  }
+
+  .fade-in-up.is-visible {
+    @apply translate-y-0 opacity-100;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-theme px-6 py-3 text-sm font-medium transition duration-250;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary-600 text-white hover:bg-primary-700;
+  }
+
+  .btn-secondary {
+    @apply btn border border-neutral-300 bg-transparent text-ink hover:bg-neutral-100;
+  }
+}

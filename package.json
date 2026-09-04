@@ -1,0 +1,20 @@
+{
+  "name": "frusantos-theme",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Tema WordPress à medida para frusantos.com — Tailwind CSS + Vite, sem page builder.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "watch": "vite build --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.9",
+    "@tailwindcss/typography": "^0.5.15",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13",
+    "vite": "^5.4.8"
+  }
+}
