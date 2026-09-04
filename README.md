@@ -19,7 +19,7 @@ produto, carrinho) ficam para a fase seguinte — ver `woocommerce/README.md`.
 ## Estrutura
 
 ```
-frusantos-theme/
+frusantos/
 ├── functions.php              # bootstrap — só faz require dos ficheiros em inc/
 ├── style.css                  # cabeçalho de metadados do tema (exigido pelo WP; sem CSS real aqui)
 ├── header.php / footer.php    # não abrem/fecham <main> — ver nota abaixo
@@ -58,7 +58,9 @@ hooks `woocommerce_before_main_content` / `woocommerce_after_main_content`
 
 ## Como correr localmente (Local WP + VS Code)
 
-1. Colocar esta pasta em `wp-content/themes/frusantos` no site Local WP.
+1. Colocar esta pasta (já renomeada para `frusantos`) em
+   `wp-content/themes/frusantos` no site Local WP — o nome da pasta é o
+   slug do tema, por isso importa mantê-lo assim.
 2. Ativar o tema "Frusantos" no wp-admin.
 3. Instalar dependências e arrancar o Vite:
 
