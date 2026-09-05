@@ -22,8 +22,10 @@
 	<?php esc_html_e('Saltar para o conteúdo', 'frusantos'); ?>
 </a>
 
+<?php get_template_part('template-parts/header/utility-bar'); ?>
+
 <header id="masthead" class="sticky top-0 z-40 border-b border-neutral-200 bg-surface/95 backdrop-blur">
-	<div class="container-site relative flex items-center justify-between py-4">
+	<div class="relative flex items-center justify-between px-6 py-4 lg:px-[60px]">
 		<?php get_template_part('template-parts/header/branding'); ?>
 		<?php get_template_part('template-parts/header/navigation'); ?>
 	</div>

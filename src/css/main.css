@@ -1,36 +1,11 @@
+/* @import tem de vir antes de tudo, incluindo @tailwind (regra do CSS). */
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/*
- * Fontes variáveis servidas localmente.
- *
- * Ficheiros esperados em src/fonts/ (não incluídos neste scaffold —
- * descarregar as fontes variáveis .woff2 do Google Fonts / Fontsource
- * e colocar aqui com estes nomes, ou ajustar os caminhos abaixo):
- *
- *   src/fonts/fraunces-variable.woff2   (Fraunces, licença OFL)
- *   src/fonts/inter-variable.woff2      (Inter, licença OFL)
- *
- * Escolhas de fonte também placeholder — ver nota em tailwind.config.js.
- */
 @layer base {
-  @font-face {
-    font-family: 'Fraunces Variable';
-    src: url('../fonts/fraunces-variable.woff2') format('woff2-variations');
-    font-weight: 300 900;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Inter Variable';
-    src: url('../fonts/inter-variable.woff2') format('woff2-variations');
-    font-weight: 100 900;
-    font-style: normal;
-    font-display: swap;
-  }
-
   html {
     scroll-behavior: smooth;
   }
@@ -40,7 +15,7 @@
   }
 
   h1, h2, h3, h4 {
-    @apply font-display text-ink;
+    @apply font-display font-extrabold uppercase tracking-tight text-ink;
   }
 
   ::selection {
@@ -79,14 +54,50 @@
   }
 
   .btn {
-    @apply inline-flex items-center justify-center rounded-theme px-6 py-3 text-sm font-medium transition duration-250;
+    @apply inline-flex items-center justify-center rounded-full px-8 py-4 text-[13px] font-bold uppercase tracking-[.1em] transition duration-250;
   }
 
+  /* CTA principal — laranja, cor exata do design aprovado */
   .btn-primary {
-    @apply btn bg-primary-600 text-white hover:bg-primary-700;
+    @apply btn bg-secondary-500 text-white hover:bg-secondary-600;
   }
 
-  .btn-secondary {
-    @apply btn border border-neutral-300 bg-transparent text-ink hover:bg-neutral-100;
+  /* CTA secundário escuro — usado sobre fundo claro (ex: "Sobre nós") */
+  .btn-dark {
+    @apply btn bg-slate text-white hover:bg-ink;
+  }
+
+  /* CTA verde — usado sobre fundo escuro (secção de internacionalização) */
+  .btn-accent {
+    @apply btn bg-primary-400 text-[#14210f] hover:bg-primary-500;
+  }
+
+  /* Contorno — usado sobre imagens/fundos escuros (hero) */
+  .btn-outline {
+    @apply btn border border-white/45 text-white hover:bg-white/10;
+  }
+
+  /* Link sublinhado — CTA secundário de texto ("Ver as marcas", "Ler mais"…) */
+  .link-underline {
+    @apply inline-block border-b-2 border-primary-400 pb-1 text-[13px] font-bold uppercase tracking-[.1em] text-ink transition duration-250 hover:border-primary-600;
+  }
+
+  /* Etiqueta pequena em maiúsculas (mono) usada antes de cada título de secção */
+  .eyebrow {
+    @apply mb-3 font-mono text-xs uppercase tracking-[.22em] text-primary-600;
+  }
+
+  /* Menu principal (desktop, mobile e fallback partilham esta classe) */
+  .site-nav {
+    list-style: none;
+  }
+
+  .site-nav a {
+    @apply transition duration-250 hover:text-primary-700;
+  }
+
+  .site-nav .current-menu-item > a,
+  .site-nav .current_page_item > a {
+    @apply text-primary-700;
   }
 }

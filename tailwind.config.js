@@ -2,13 +2,14 @@ import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
 
 /**
- * Design tokens — PLACEHOLDER.
+ * Design tokens — paleta do design aprovado (Claude Design canvas, "Turno
+ * 4a" — versão mais recente da homepage). Valores exatos copiados do HTML
+ * do design, não aproximados:
  *
- * As cores, tipografia e escala abaixo são um ponto de partida coerente
- * (paleta terrosa: verde-oliva + terracota, inspirada em azeite/castanha),
- * NÃO a paleta extraída do site atual. Assim que enviares as capturas de
- * ecrã, atualizo apenas os valores em `theme.extend.colors` e `fontFamily`
- * — a estrutura dos templates não muda.
+ *   verde CTA/hover:    #7DBE4E / #6FAD42     laranja CTA/hover: #E8801F / #CF6F16
+ *   verde eyebrow:      #5E9E33               verde claro (fundo escuro): #A8D585
+ *   teal escuro (topo/secções contraste): #2F4650      preto-azulado (rodapé/texto): #1C2226
+ *   bege secções:       #F3F1EA               fundo base: #FFFDFA      borda: #E7E4DC
  *
  * @type {import('tailwindcss').Config}
  */
@@ -22,69 +23,66 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Verde-oliva — hortícolas / azeite
+        // Verde — CTAs secundários, eyebrows, acentos
         primary: {
-          50: '#f4f6f1',
-          100: '#e5ebdc',
-          200: '#ccd8ba',
-          300: '#adc090',
-          400: '#8ba668',
-          500: '#6b8a49',
-          600: '#526e37',
-          700: '#40562c',
-          800: '#354625',
-          900: '#2c3a20',
-          DEFAULT: '#6b8a49',
+          50: '#f2f9ec',
+          100: '#e2f2d2',
+          200: '#c5e5a8',
+          300: '#a8d585', // verde claro usado sobre fundo escuro
+          400: '#7dbe4e', // verde CTA
+          500: '#6fad42', // hover do CTA verde
+          600: '#5e9e33', // verde eyebrow/label
+          700: '#4a7d29',
+          800: '#3d6522',
+          900: '#33531d',
+          DEFAULT: '#7dbe4e',
         },
-        // Terracota/âmbar — castanha / colheita
+        // Laranja — CTA principal (botão "Conheça as marcas", datas, "Enviar")
         secondary: {
-          50: '#fdf6ee',
-          100: '#f9e8d2',
-          200: '#f2cea3',
-          300: '#e8ac6b',
-          400: '#dd8a3f',
-          500: '#c66d28',
-          600: '#a1541f',
-          700: '#7f421c',
-          800: '#67361c',
-          900: '#572e1a',
-          DEFAULT: '#c66d28',
+          50: '#fdf3e9',
+          100: '#fbe1c6',
+          200: '#f6c48c',
+          300: '#f0a355',
+          400: '#ea8f34',
+          500: '#e8801f', // cor exata do CTA
+          600: '#cf6f16', // hover exato
+          700: '#a85813',
+          800: '#864613',
+          900: '#6f3b13',
+          DEFAULT: '#e8801f',
         },
-        // Neutros quentes (pedra) — para texto, fundos e bordas
+        // Neutros quentes — texto, fundos de secção, bordas (bege, não cinza)
         neutral: {
-          50: '#faf9f6',
-          100: '#f2f0ea',
-          200: '#e4e0d6',
-          300: '#cfc9ba',
-          400: '#a9a08c',
-          500: '#857965',
-          600: '#665c4c',
-          700: '#4d453a',
-          800: '#362f28',
-          900: '#24201b',
+          50: '#fffdfa', // = surface
+          100: '#f3f1ea', // fundo bege de secção
+          200: '#e7e4dc', // borda
+          300: '#dad6cb', // borda de inputs
+          400: '#98a0a6',
+          500: '#7a828a',
+          600: '#586066',
+          700: '#454d52',
+          800: '#4a5359',
+          900: '#1c2226', // = ink
+        },
+        // Teal escuro — barra de utilidades, secção de internacionalização
+        slate: {
+          200: '#dce4e7',
+          300: '#c9d6d2',
+          400: '#9db0b8',
+          500: '#7a828a',
+          DEFAULT: '#2f4650',
+          900: '#1c2226', // rodapé (mais escuro que o DEFAULT)
         },
         // Aliases semânticos usados nos templates em vez de neutral-XXX direto
-        surface: '#faf9f6',
-        ink: '#24201b',
+        surface: '#fffdfa',
+        ink: '#1c2226',
       },
       fontFamily: {
-        // Serif de exibição com carácter — títulos e hero
-        display: [
-          'Fraunces Variable',
-          'Fraunces',
-          'ui-serif',
-          'Georgia',
-          'serif',
-        ],
-        // Grotesco neutro e legível — corpo de texto e UI
-        sans: [
-          'Inter Variable',
-          'Inter',
-          'ui-sans-serif',
-          'system-ui',
-          '-apple-system',
-          'sans-serif',
-        ],
+        // Grotesco geométrico — títulos (bold/uppercase) e corpo de texto
+        display: ['Figtree', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['Figtree', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
+        // Monoespaçada — eyebrows, badges, metadados (labels em maiúsculas)
+        mono: ['IBM Plex Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       fontSize: {
         // Escala com contraste forte para títulos (complementa a de omissão do Tailwind)

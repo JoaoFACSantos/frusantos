@@ -8,25 +8,42 @@
  * @package Frusantos
  */
 ?>
-<nav class="hidden items-center gap-8 lg:flex" aria-label="<?php esc_attr_e('Menu principal', 'frusantos'); ?>">
+<nav class="hidden items-center gap-[30px] text-[13px] font-semibold uppercase tracking-[.1em] lg:flex" aria-label="<?php esc_attr_e('Menu principal', 'frusantos'); ?>">
 	<?php
 	wp_nav_menu(
 		[
 			'theme_location' => 'primary',
 			'container'      => false,
-			'menu_class'     => 'flex items-center gap-8 text-sm font-medium text-ink',
-			'fallback_cb'    => false,
+			'menu_class'     => 'site-nav flex items-center gap-[30px]',
+			'fallback_cb'    => 'frusantos_primary_menu_fallback',
 		]
 	);
 	?>
+</nav>
+
+<div class="hidden items-center gap-4 text-sm lg:flex">
+	<a href="<?php echo esc_url(home_url('/contactos/')); ?>" class="font-semibold">
+		<?php esc_html_e('Lista de Pedidos', 'frusantos'); ?>
+	</a>
 
 	<?php if (class_exists('WooCommerce')) : ?>
-		<a href="<?php echo esc_url(wc_get_cart_url()); ?>" class="flex items-center gap-1 text-sm font-medium text-ink" aria-label="<?php esc_attr_e('Carrinho', 'frusantos'); ?>">
-			<?php esc_html_e('Carrinho', 'frusantos'); ?>
-			<span>(<?php echo esc_html(WC()->cart ? WC()->cart->get_cart_contents_count() : 0); ?>)</span>
+		<a
+			href="<?php echo esc_url(wc_get_cart_url()); ?>"
+			class="flex items-center gap-2 rounded-full border border-neutral-300 px-4 py-[9px] font-semibold text-neutral-700 transition duration-250 hover:border-slate hover:text-ink"
+		>
+			<?php
+			$frusantos_cart_count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
+			$frusantos_cart_total = WC()->cart ? WC()->cart->get_cart_total() : wc_price(0);
+			printf(
+				/* translators: 1: número de artigos, 2: total do carrinho */
+				esc_html(_n('%1$s item / %2$s', '%1$s items / %2$s', $frusantos_cart_count, 'frusantos')),
+				esc_html($frusantos_cart_count),
+				wp_kses_post($frusantos_cart_total)
+			);
+			?>
 		</a>
 	<?php endif; ?>
-</nav>
+</div>
 
 <button type="button" class="lg:hidden" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu">
 	<span class="sr-only"><?php esc_html_e('Abrir menu', 'frusantos'); ?></span>
@@ -41,9 +58,13 @@
 		[
 			'theme_location' => 'primary',
 			'container'      => false,
-			'menu_class'     => 'flex flex-col gap-4 text-base font-medium text-ink',
-			'fallback_cb'    => false,
+			'menu_class'     => 'site-nav flex flex-col gap-4 text-base font-semibold uppercase tracking-[.06em]',
+			'fallback_cb'    => 'frusantos_primary_menu_fallback',
 		]
 	);
 	?>
+
+	<a href="<?php echo esc_url(home_url('/contactos/')); ?>" class="btn-primary mt-6 w-full">
+		<?php esc_html_e('Lista de Pedidos', 'frusantos'); ?>
+	</a>
 </div>

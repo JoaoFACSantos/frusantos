@@ -74,3 +74,88 @@ function frusantos_archive_title(): string {
 
 	return __('Arquivo', 'frusantos');
 }
+
+/**
+ * Estrutura de navegação principal, usada como fallback enquanto não
+ * existir um menu "Menu Principal" configurado em Aparência > Menus, e
+ * como fonte única de verdade para os links reais do site (mesma
+ * estrutura de frusantos.com: A Empresa, Marcas, Comunicação, Loja,
+ * Alojamentos, Contactos).
+ */
+function frusantos_nav_links(): array {
+	return [
+		[
+			'label' => __('A Empresa', 'frusantos'),
+			'url'   => home_url('/sobre-nos/'),
+		],
+		[
+			'label' => __('Marcas', 'frusantos'),
+			'url'   => home_url('/marcas/'),
+		],
+		[
+			'label' => __('Comunicação', 'frusantos'),
+			'url'   => home_url('/blog/'),
+		],
+		[
+			'label' => __('Loja', 'frusantos'),
+			'url'   => class_exists('WooCommerce') ? wc_get_page_permalink('shop') : home_url('/loja/'),
+		],
+		[
+			'label' => __('Alojamentos', 'frusantos'),
+			'url'   => home_url('/alojamentos/'),
+		],
+		[
+			'label' => __('Contactos', 'frusantos'),
+			'url'   => home_url('/contactos/'),
+		],
+	];
+}
+
+/**
+ * Fallback do menu principal (desktop e mobile partilham a mesma
+ * `menu_class`, passada pelo `wp_nav_menu` que chama isto).
+ */
+function frusantos_primary_menu_fallback(array $args): void {
+	echo '<ul class="' . esc_attr($args['menu_class']) . '">';
+	foreach (frusantos_nav_links() as $link) {
+		printf(
+			'<li><a href="%1$s">%2$s</a></li>',
+			esc_url($link['url']),
+			esc_html($link['label'])
+		);
+	}
+	echo '</ul>';
+}
+
+/**
+ * Fallback do menu de rodapé — links legais reais do site atual em vez
+ * de placeholders (política de privacidade, termos, litígios online). O
+ * livro de reclamações eletrónico é mostrado à parte, como selo/imagem
+ * (ver footer.php), tal como no site atual.
+ */
+function frusantos_footer_menu_fallback(array $args): void {
+	$links = [
+		[
+			'label' => __('Política de Privacidade', 'frusantos'),
+			'url'   => home_url('/politica-privacidade/'),
+		],
+		[
+			'label' => __('Termos e Condições', 'frusantos'),
+			'url'   => home_url('/termos-condicoes/'),
+		],
+		[
+			'label' => __('Litígios Online', 'frusantos'),
+			'url'   => home_url('/litigios-online/'),
+		],
+	];
+
+	echo '<ul class="' . esc_attr($args['menu_class']) . '">';
+	foreach ($links as $link) {
+		printf(
+			'<li><a href="%1$s">%2$s</a></li>',
+			esc_url($link['url']),
+			esc_html($link['label'])
+		);
+	}
+	echo '</ul>';
+}
