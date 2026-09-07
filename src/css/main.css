@@ -43,14 +43,40 @@
   }
 
   /* Fade-in ao scroll — ativado via IntersectionObserver em src/js/main.js.
-     Elementos com esta classe começam invisíveis e sobem ligeiramente;
-     a classe .is-visible é adicionada por JS quando entram no viewport. */
+     Elementos com esta classe começam invisíveis e sobem ligeiramente; a
+     classe .is-visible é adicionada/removida por JS consoante entram ou
+     saem do viewport, para o movimento se repetir em cada passagem
+     (para baixo revela, para cima esconde) — não é um reveal único. */
   .fade-in-up {
-    @apply translate-y-3 opacity-0 transition duration-250 ease-out;
+    @apply translate-y-4 opacity-0 transition-[opacity,transform] duration-500 ease-out;
   }
 
   .fade-in-up.is-visible {
     @apply translate-y-0 opacity-100;
+  }
+
+  /* Cabeçalho fixo — encolhe ao fazer scroll (barra de utilidade colapsa
+     em altura, o próprio cabeçalho reduz o padding), sempre com
+     transição suave. Ver o listener de scroll em src/js/main.js. */
+  [data-utility-bar] {
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 300ms ease;
+  }
+
+  .site-header.is-scrolled [data-utility-bar] {
+    grid-template-rows: 0fr;
+  }
+
+  .site-header.is-scrolled [data-header-row] {
+    @apply py-2.5;
+  }
+
+  .site-header {
+    @apply shadow-none transition-shadow duration-300;
+  }
+
+  .site-header.is-scrolled {
+    @apply shadow-soft;
   }
 
   .btn {
@@ -93,7 +119,7 @@
   }
 
   .site-nav a {
-    @apply transition duration-250 hover:text-primary-700;
+    @apply whitespace-nowrap transition duration-250 hover:text-primary-700;
   }
 
   .site-nav .current-menu-item > a,

@@ -22,11 +22,13 @@
 	<?php esc_html_e('Saltar para o conteúdo', 'frusantos'); ?>
 </a>
 
-<?php get_template_part('template-parts/header/utility-bar'); ?>
+<div id="site-header" class="site-header fixed inset-x-0 top-0 z-40 bg-surface/95 backdrop-blur">
+	<?php get_template_part('template-parts/header/utility-bar'); ?>
 
-<header id="masthead" class="sticky top-0 z-40 border-b border-neutral-200 bg-surface/95 backdrop-blur">
-	<div class="relative flex items-center justify-between px-6 py-4 lg:px-[60px]">
-		<?php get_template_part('template-parts/header/branding'); ?>
-		<?php get_template_part('template-parts/header/navigation'); ?>
-	</div>
-</header>
+	<header id="masthead" class="border-b border-neutral-200">
+		<div class="relative mx-auto flex max-w-[1440px] items-center justify-between px-6 py-4 transition-[padding] duration-300 ease-out lg:px-[60px]" data-header-row>
+			<?php get_template_part('template-parts/header/branding'); ?>
+			<?php get_template_part('template-parts/header/navigation'); ?>
+		</div>
+	</header>
+</div>

@@ -20,11 +20,11 @@
 		<div class="mb-6 flex items-center gap-3.5">
 			<span class="h-[3px] w-12 bg-primary-400"></span>
 			<span class="font-mono text-xs uppercase tracking-[.24em] text-slate-300">
-				<?php esc_html_e('Frutos Selecionados, S.A. · Ferreirim, Portugal', 'frusantos'); ?>
+				<?php esc_html_e('Frutos Selecionados, S.A.', 'frusantos'); ?>
 			</span>
 		</div>
 
-		<h1 class="mb-6 text-3xl leading-[1.05] sm:text-5xl lg:text-[78px] lg:leading-[1.02]">
+		<h1 class="mb-6 text-3xl leading-[1.05] text-primary-400 sm:text-5xl lg:text-[78px] lg:leading-[1.02]">
 			<?php esc_html_e('Sabores que se sentem há 35 anos', 'frusantos'); ?>
 		</h1>
 

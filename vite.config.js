@@ -62,7 +62,12 @@ export default defineConfig({
   build: {
     manifest: true,
     outDir: 'dist',
-    emptyOutDir: true,
+    // false porque o servidor local (nginx/PHP-FPM) por vezes mantém um
+    // handle aberto a ficheiros dentro de dist/assets, o que impede o
+    // Vite de apagar a pasta antes de escrever os novos ficheiros
+    // (EBUSY no Windows). dist/ está no .gitignore, por isso ficheiros
+    // antigos acumulados ali não têm impacto nenhum no repositório.
+    emptyOutDir: false,
     rollupOptions: {
       input: {
         main: 'src/js/main.js',
