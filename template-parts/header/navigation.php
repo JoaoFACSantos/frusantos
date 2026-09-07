@@ -21,12 +21,8 @@
 	?>
 </nav>
 
-<div class="hidden items-center gap-4 text-sm lg:flex">
-	<a href="<?php echo esc_url(home_url('/contactos/')); ?>" class="font-semibold">
-		<?php esc_html_e('Lista de Pedidos', 'frusantos'); ?>
-	</a>
-
-	<?php if (class_exists('WooCommerce')) : ?>
+<?php if (class_exists('WooCommerce')) : ?>
+	<div class="hidden items-center gap-4 text-sm lg:flex">
 		<a
 			href="<?php echo esc_url(wc_get_cart_url()); ?>"
 			class="flex items-center gap-2 rounded-full border border-neutral-300 px-4 py-[9px] font-semibold text-neutral-700 transition duration-250 hover:border-slate hover:text-ink"
@@ -42,8 +38,8 @@
 			);
 			?>
 		</a>
-	<?php endif; ?>
-</div>
+	</div>
+<?php endif; ?>
 
 <button type="button" class="lg:hidden" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu">
 	<span class="sr-only"><?php esc_html_e('Abrir menu', 'frusantos'); ?></span>
@@ -63,8 +59,4 @@
 		]
 	);
 	?>
-
-	<a href="<?php echo esc_url(home_url('/contactos/')); ?>" class="btn-primary mt-6 w-full">
-		<?php esc_html_e('Lista de Pedidos', 'frusantos'); ?>
-	</a>
 </div>
