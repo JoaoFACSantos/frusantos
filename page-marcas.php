@@ -20,32 +20,34 @@ get_header();
 ?>
 
 <main id="main">
-	<section class="fade-in-up grid gap-12 px-6 py-16 sm:pt-[84px] lg:grid-cols-2 lg:items-end lg:gap-16 lg:px-[60px]">
-		<div>
-			<p class="eyebrow"><?php esc_html_e('Descubra as nossas marcas', 'frusantos'); ?></p>
-			<h1 class="text-6xl leading-[0.9] sm:text-8xl lg:text-[132px] lg:leading-[0.88]">
+	<section class="relative flex min-h-[420px] items-center overflow-hidden sm:min-h-[520px]">
+		<img
+			src="<?php echo esc_url(FRUSANTOS_URI . '/assets/images/marcas-hero.webp'); ?>"
+			alt=""
+			class="absolute inset-0 h-full w-full object-cover"
+			fetchpriority="high"
+		>
+		<div class="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/70 to-ink/40"></div>
+
+		<div class="relative px-6 py-16 sm:py-20 lg:px-[60px]">
+			<div class="mb-5 flex items-center gap-4">
+				<span class="h-[3px] w-14 bg-primary-400"></span>
+				<span class="font-mono text-xs uppercase tracking-[.24em] text-white"><?php esc_html_e('Descubra as nossas marcas', 'frusantos'); ?></span>
+			</div>
+			<h1 class="max-w-2xl text-4xl leading-[1.05] text-primary-400 sm:text-6xl lg:text-[76px] lg:leading-[1.02]">
 				<?php esc_html_e('Marcas', 'frusantos'); ?>
 			</h1>
-			<p class="mt-8 max-w-xl text-base leading-relaxed text-neutral-700 sm:text-lg">
+			<p class="mt-6 max-w-xl text-base leading-relaxed text-white sm:text-lg">
 				<?php esc_html_e('Procuramos marcar a diferença, valorizamos a produção portuguesa e apostamos em produtos identitários de elevada qualidade, proporcionando através das nossas marcas experiências degustativas, sensoriais e emocionais que nos definem e caracterizam — que são nossas, da nossa região e do nosso país, Portugal.', 'frusantos'); ?>
 			</p>
-			<div class="mt-8 flex flex-wrap gap-3">
-				<a href="#saudade" class="btn-dark">
-					Saudade <span class="ml-1 font-normal opacity-60"><?php esc_html_e('Sabores do Coração', 'frusantos'); ?></span>
+			<div class="mt-9 flex flex-wrap gap-3">
+				<a href="#saudade" class="btn-primary">
+					Saudade <span class="ml-1 font-normal opacity-70"><?php esc_html_e('Sabores do Coração', 'frusantos'); ?></span>
 				</a>
-				<a href="#flor-do-tavora" class="btn border border-neutral-300 text-ink hover:border-ink">
-					Flôr do Távora <span class="ml-1 font-normal text-neutral-500"><?php esc_html_e('Azeite', 'frusantos'); ?></span>
+				<a href="#flor-do-tavora" class="btn-outline">
+					Flôr do Távora <span class="ml-1 font-normal opacity-70"><?php esc_html_e('Azeite', 'frusantos'); ?></span>
 				</a>
 			</div>
-		</div>
-
-		<div class="aspect-[4/5] overflow-hidden rounded-theme lg:aspect-[4/5]">
-			<img
-				src="<?php echo esc_url(FRUSANTOS_URI . '/assets/images/marcas-hero.webp'); ?>"
-				alt="<?php esc_attr_e('Mão com folha de castanheiro', 'frusantos'); ?>"
-				class="h-full w-full object-cover"
-				fetchpriority="high"
-			>
 		</div>
 	</section>
 
