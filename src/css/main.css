@@ -143,12 +143,29 @@
     list-style: none;
   }
 
+  /* Cada link ganha uma pequena linha por baixo que cresce da esquerda
+     para a direita ao passar o cursor (::after em vez de border-bottom,
+     para não empurrar o texto ao aparecer). */
   .site-nav a {
-    @apply whitespace-nowrap transition duration-250 hover:text-primary-700;
+    @apply relative whitespace-nowrap pb-1 transition duration-250 hover:text-primary-700;
+  }
+
+  .site-nav a::after {
+    content: '';
+    @apply absolute bottom-0 left-0 h-[2px] w-0 bg-primary-400 transition-[width] duration-300 ease-out;
+  }
+
+  .site-nav a:hover::after {
+    @apply w-full;
   }
 
   .site-nav .current-menu-item > a,
   .site-nav .current_page_item > a {
     @apply text-primary-700;
+  }
+
+  .site-nav .current-menu-item > a::after,
+  .site-nav .current_page_item > a::after {
+    @apply w-full;
   }
 }
