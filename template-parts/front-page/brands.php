@@ -2,8 +2,9 @@
 /**
  * "As nossas marcas" — teaser com os logótipos reais das marcas
  * (Saudade, Flor do Távora), os mesmos ficheiros usados em
- * page-marcas.php. Grid a 4 colunas no desktop para já acomodar
- * eventuais marcas futuras sem alterar a estrutura.
+ * page-marcas.php. Grid limitado a 2 colunas e a uma largura máxima
+ * porque só há 2 marcas — um grid maior deixava a secção com espaço
+ * vazio à direita. Se surgir uma terceira marca, voltar a alargar.
  *
  * @package Frusantos
  */
@@ -30,17 +31,17 @@ $frusantos_brands = [
 		</a>
 	</div>
 
-	<div class="grid grid-cols-2 gap-5 lg:grid-cols-4">
+	<div class="grid max-w-2xl grid-cols-2 gap-5">
 		<?php foreach ($frusantos_brands as $frusantos_i => $frusantos_brand) : ?>
 			<a
 				href="<?php echo esc_url(home_url('/marcas/')); ?>"
-				class="fade-in-up flex aspect-[3/2] items-center justify-center rounded-2xl border border-neutral-200 bg-white p-8 transition duration-250 hover:border-primary-300 hover:shadow-soft"
+				class="fade-in-up group flex aspect-[3/2] items-center justify-center overflow-hidden rounded-2xl border border-neutral-200 bg-white p-8 transition duration-300 hover:-translate-y-1.5 hover:border-primary-300 hover:shadow-soft"
 				style="transition-delay: <?php echo esc_attr($frusantos_i * 75); ?>ms;"
 			>
 				<img
 					src="<?php echo esc_url(FRUSANTOS_URI . '/assets/images/' . $frusantos_brand['logo']); ?>"
 					alt="<?php echo esc_attr($frusantos_brand['name']); ?>"
-					class="h-auto max-h-full w-full max-w-[180px] object-contain"
+					class="h-auto max-h-full w-full max-w-[180px] object-contain transition duration-300 group-hover:scale-110"
 					loading="lazy"
 				>
 			</a>
