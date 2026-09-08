@@ -1,16 +1,22 @@
 <?php
 /**
- * "As nossas marcas" — teaser com placeholders para os logótipos das
- * marcas (Saudade, Flor do Távora, …). Os placeholders são intencionais
- * — tal como no design aprovado — até termos os ficheiros reais de cada
- * logótipo de marca.
+ * "As nossas marcas" — teaser com os logótipos reais das marcas
+ * (Saudade, Flor do Távora), os mesmos ficheiros usados em
+ * page-marcas.php. Grid a 4 colunas no desktop para já acomodar
+ * eventuais marcas futuras sem alterar a estrutura.
  *
  * @package Frusantos
  */
 
-$frusantos_brand_names = [
-	__('Saudade', 'frusantos'),
-	__('Flor do Távora', 'frusantos'),
+$frusantos_brands = [
+	[
+		'name' => __('Saudade', 'frusantos'),
+		'logo' => 'logo-saudade.png',
+	],
+	[
+		'name' => __('Flor do Távora', 'frusantos'),
+		'logo' => 'logo-flor-tavora.svg',
+	],
 ];
 ?>
 <section class="bg-neutral-100 px-6 py-16 lg:px-[60px] lg:py-[88px]">
@@ -25,13 +31,18 @@ $frusantos_brand_names = [
 	</div>
 
 	<div class="grid grid-cols-2 gap-5 lg:grid-cols-4">
-		<?php foreach ($frusantos_brand_names as $frusantos_i => $frusantos_brand) : ?>
+		<?php foreach ($frusantos_brands as $frusantos_i => $frusantos_brand) : ?>
 			<a
 				href="<?php echo esc_url(home_url('/marcas/')); ?>"
-				class="fade-in-up flex aspect-[3/2] items-center justify-center rounded-2xl border border-neutral-200 bg-white text-center font-mono text-xs text-neutral-400 transition duration-250 hover:border-primary-300 hover:text-neutral-600"
-				style="transition-delay: <?php echo esc_attr($frusantos_i * 75); ?>ms; background-image: repeating-linear-gradient(135deg, #efede4 0 8px, #f7f5ee 8px 16px);"
+				class="fade-in-up flex aspect-[3/2] items-center justify-center rounded-2xl border border-neutral-200 bg-white p-8 transition duration-250 hover:border-primary-300 hover:shadow-soft"
+				style="transition-delay: <?php echo esc_attr($frusantos_i * 75); ?>ms;"
 			>
-				<?php echo esc_html__('logótipo', 'frusantos') . '<br>' . esc_html($frusantos_brand); ?>
+				<img
+					src="<?php echo esc_url(FRUSANTOS_URI . '/assets/images/' . $frusantos_brand['logo']); ?>"
+					alt="<?php echo esc_attr($frusantos_brand['name']); ?>"
+					class="h-auto max-h-full w-full max-w-[180px] object-contain"
+					loading="lazy"
+				>
 			</a>
 		<?php endforeach; ?>
 		<a href="<?php echo esc_url(home_url('/marcas/')); ?>" class="fade-in-up sm:hidden col-span-2 link-underline mt-2 text-center">

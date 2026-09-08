@@ -8,10 +8,12 @@
  *
  * Estrutura e conteúdo copiados do design aprovado (Claude Design). Os
  * logótipos da Saudade e da Flôr do Távora são os ficheiros reais do
- * site atual; a foto do hero também. Ainda não há fotos reais para o
- * produto da Flôr do Távora (garrafa de azeite) nem para uma panorâmica
- * do vale do Távora — em vez de inventar uma imagem, essas secções
- * ficam com um painel de cor em vez de foto, até termos os ficheiros.
+ * site atual; a foto do hero também. O logótipo da Flôr do Távora foi
+ * vetorizado a partir do PNG original (375×192px, a única resolução
+ * disponível no site atual) para ficar nítido em tamanhos maiores.
+ * Ainda não há foto real da garrafa de azeite Flôr do Távora — usa-se
+ * por agora uma foto real da colheita de azeitona (mesma usada na
+ * galeria de page-sobre-nos.php) em vez de inventar uma imagem.
  *
  * @package Frusantos
  */
@@ -78,9 +80,9 @@ get_header();
 	<section id="flor-do-tavora" class="fade-in-up grid gap-12 px-6 py-16 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-[60px] lg:py-[130px]">
 		<div>
 			<img
-				src="<?php echo esc_url(FRUSANTOS_URI . '/assets/images/logo-flor-tavora.png'); ?>"
+				src="<?php echo esc_url(FRUSANTOS_URI . '/assets/images/logo-flor-tavora.svg'); ?>"
 				alt="<?php esc_attr_e('Flôr do Távora', 'frusantos'); ?>"
-				class="mx-auto mb-8 h-auto w-full max-w-[320px]"
+				class="mx-auto mb-8 h-auto w-full max-w-[420px]"
 			>
 			<p class="text-base leading-relaxed text-neutral-700 sm:text-lg">
 				<?php esc_html_e('Inspirada no rio Távora, que nasce na região e vai desaguar no rio Douro, guiando-nos por magníficas paisagens de vales rasgados, montanhas imponentes e encostas verdejantes com soutos de castanheiros, vinhas, olivais e searas — onde selecionamos a Flor do Távora, um azeite de sabor e aroma inconfundíveis.', 'frusantos'); ?>
@@ -89,19 +91,12 @@ get_header();
 				<?php esc_html_e('Ver produtos na loja', 'frusantos'); ?> <span aria-hidden="true">&rarr;</span>
 			</a>
 		</div>
-		<?php
-		/**
-		 * TODO: substituir por fotografia real da garrafa de azeite Flôr
-		 * do Távora assim que existir — painel de cor em vez de placeholder
-		 * tracejado, para não parecer uma secção "por acabar".
-		 */
-		?>
-		<div class="flex aspect-[4/3] items-end overflow-hidden rounded-theme bg-gradient-to-br from-slate to-ink p-8">
+		<div class="aspect-[4/3] overflow-hidden rounded-theme">
 			<img
-				src="<?php echo esc_url(FRUSANTOS_URI . '/assets/images/logo-flor-tavora.png'); ?>"
-				alt=""
-				aria-hidden="true"
-				class="mx-auto h-1/2 w-auto opacity-90 brightness-0 invert"
+				src="<?php echo esc_url(FRUSANTOS_URI . '/assets/images/galeria-3.webp'); ?>"
+				alt="<?php esc_attr_e('Azeitonas colhidas para produção do azeite Flôr do Távora', 'frusantos'); ?>"
+				class="h-full w-full object-cover"
+				loading="lazy"
 			>
 		</div>
 	</section>
