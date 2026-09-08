@@ -19,6 +19,9 @@ export default {
     './inc/**/*.php',
     './template-parts/**/*.php',
     './woocommerce/**/*.php',
+    // main.js troca classes via classList (ex: initTabs, controlos da loja) —
+    // sem isto o JIT nunca via essas strings e gerava CSS incompleto.
+    './src/js/**/*.js',
   ],
   theme: {
     extend: {

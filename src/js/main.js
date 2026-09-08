@@ -156,6 +156,158 @@ function initTabs() {
   });
 }
 
+/**
+ * Página da Loja (page-loja.php) — filtro de categoria, ordenação,
+ * alternância de colunas e "lista de pedidos". A lista fica guardada no
+ * localStorage do visitante (não há WooCommerce nem servidor a processar
+ * pedidos ainda) e o botão final abre o cliente de email do próprio
+ * visitante com um rascunho preenchido — funcional de verdade, sem
+ * simular um checkout que não existe.
+ */
+const FRUSANTOS_SHOP_LIST_KEY = 'frusantos-lista-pedidos';
+
+function frusantosGetShopList() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(FRUSANTOS_SHOP_LIST_KEY) || '[]');
+    return Array.isArray(raw) ? raw : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function frusantosSetShopList(list) {
+  try {
+    localStorage.setItem(FRUSANTOS_SHOP_LIST_KEY, JSON.stringify(list));
+  } catch (e) {
+    /* localStorage indisponível (privado/bloqueado) — segue sem guardar */
+  }
+}
+
+function initShopPage() {
+  const grid = document.querySelector('[data-shop-grid]');
+  if (!grid) return;
+
+  const cards = Array.from(grid.querySelectorAll('[data-shop-card]'));
+  const emptyState = document.querySelector('[data-shop-empty]');
+  const summaryBar = document.querySelector('[data-shop-summary]');
+  const summaryCount = document.querySelector('[data-shop-summary-count]');
+  const summaryLink = document.querySelector('[data-shop-summary-link]');
+
+  function renderList() {
+    const list = frusantosGetShopList();
+
+    cards.forEach((card) => {
+      const btn = card.querySelector('[data-shop-toggle]');
+      if (!btn) return;
+      const inList = list.includes(card.dataset.title);
+      btn.textContent = inList ? 'Na lista ✕' : btn.dataset.cta;
+      btn.classList.toggle('bg-slate', inList);
+      btn.classList.toggle('border-slate', inList);
+      btn.classList.toggle('text-white', inList);
+      btn.classList.toggle('border-secondary-500', !inList);
+      btn.classList.toggle('text-secondary-500', !inList);
+    });
+
+    if (summaryBar) {
+      summaryBar.classList.toggle('hidden', list.length === 0);
+      summaryBar.classList.toggle('flex', list.length > 0);
+      summaryBar.classList.toggle('flex-wrap', list.length > 0);
+    }
+    if (summaryCount) {
+      summaryCount.textContent =
+        list.length === 1 ? '1 produto na lista de pedidos' : list.length + ' produtos na lista de pedidos';
+    }
+    if (summaryLink) {
+      const subject = encodeURIComponent('Pedido de orçamento — Loja Frusantos');
+      const body = encodeURIComponent(
+        'Olá,\n\nGostaria de pedir orçamento para os seguintes produtos:\n- ' + list.join('\n- ')
+      );
+      summaryLink.href = 'mailto:frusantos@frusantos.com?subject=' + subject + '&body=' + body;
+    }
+  }
+
+  cards.forEach((card) => {
+    const btn = card.querySelector('[data-shop-toggle]');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const title = card.dataset.title;
+      const list = frusantosGetShopList();
+      const idx = list.indexOf(title);
+      if (idx >= 0) {
+        list.splice(idx, 1);
+      } else {
+        list.push(title);
+      }
+      frusantosSetShopList(list);
+      renderList();
+    });
+  });
+
+  const categoryLinks = Array.from(document.querySelectorAll('[data-shop-category]'));
+  categoryLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const category = link.dataset.shopCategory;
+
+      categoryLinks.forEach((l) => {
+        const active = l === link;
+        l.classList.toggle('text-secondary-500', active);
+        l.classList.toggle(l.dataset.shopBaseClass, !active);
+      });
+
+      let visibleCount = 0;
+      cards.forEach((card) => {
+        const show = category === 'todas' || card.dataset.category === category;
+        card.classList.toggle('hidden', !show);
+        if (show) visibleCount += 1;
+      });
+
+      if (emptyState) emptyState.classList.toggle('hidden', visibleCount > 0);
+    });
+  });
+
+  const sortButtons = Array.from(document.querySelectorAll('[data-shop-sort]'));
+  sortButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      sortButtons.forEach((b) => {
+        const active = b === btn;
+        b.classList.toggle('bg-slate', active);
+        b.classList.toggle('border-slate', active);
+        b.classList.toggle('text-white', active);
+        b.classList.toggle('border-neutral-300', !active);
+        b.classList.toggle('text-neutral-700', !active);
+      });
+
+      const mode = btn.dataset.shopSort;
+      const sorted = cards.slice().sort((a, b) => {
+        if (mode === 'az') return a.dataset.title.localeCompare(b.dataset.title, 'pt');
+        if (mode === 'za') return b.dataset.title.localeCompare(a.dataset.title, 'pt');
+        return Number(a.dataset.order) - Number(b.dataset.order);
+      });
+      sorted.forEach((card) => grid.appendChild(card));
+    });
+  });
+
+  const colButtons = Array.from(document.querySelectorAll('[data-shop-cols]'));
+  colButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      colButtons.forEach((b) => {
+        const active = b === btn;
+        b.classList.toggle('bg-slate', active);
+        b.classList.toggle('border-slate', active);
+        b.classList.toggle('text-white', active);
+        b.classList.toggle('border-neutral-300', !active);
+        b.classList.toggle('text-neutral-700', !active);
+      });
+
+      grid.classList.toggle('lg:grid-cols-2', btn.dataset.shopCols === '2');
+      grid.classList.toggle('lg:grid-cols-3', btn.dataset.shopCols === '3');
+    });
+  });
+
+  renderList();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initToggle('[data-menu-toggle]', '[data-menu-panel]');
@@ -163,4 +315,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeaderScroll();
   initHeaderOffset();
   initTabs();
+  initShopPage();
 });
