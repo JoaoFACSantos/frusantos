@@ -67,7 +67,7 @@ $frusantos_contact_rows = [
 					printf(
 						/* translators: %s: link para a política de privacidade */
 						esc_html__('Li e aceito a %s.', 'frusantos'),
-						'<a href="' . esc_url(home_url('/politica-privacidade/')) . '" class="underline">' . esc_html__('política de privacidade', 'frusantos') . '</a>'
+						'<a href="' . esc_url(frusantos_lang_url('politica-privacidade')) . '" class="underline">' . esc_html__('política de privacidade', 'frusantos') . '</a>'
 					);
 					?>
 				</span>

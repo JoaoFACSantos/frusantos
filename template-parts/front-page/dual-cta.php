@@ -12,7 +12,7 @@ $frusantos_cta_cards = [
 		'title' => __('Loja online Frusantos', 'frusantos'),
 		'text'  => __('Os produtos das nossas marcas, à venda diretamente.', 'frusantos'),
 		'cta'   => __('Visitar a loja', 'frusantos'),
-		'url'   => class_exists('WooCommerce') ? wc_get_page_permalink('shop') : home_url('/loja/'),
+		'url'   => class_exists('WooCommerce') ? wc_get_page_permalink('shop') : frusantos_lang_url('loja'),
 		'image' => 'produto-loja.jpg',
 	],
 	[
@@ -20,7 +20,7 @@ $frusantos_cta_cards = [
 		'title' => __('Ficar na nossa região', 'frusantos'),
 		'text'  => __('Alojamentos Frusantos para quem visita Ferreirim e o Douro.', 'frusantos'),
 		'cta'   => __('Ver alojamentos', 'frusantos'),
-		'url'   => home_url('/alojamentos/'),
+		'url'   => frusantos_lang_url('alojamentos'),
 		'image' => 'hero-full.webp',
 	],
 ];

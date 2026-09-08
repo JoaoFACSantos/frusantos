@@ -142,7 +142,7 @@ $frusantos_products = [
 
 	<section class="px-6 py-16 lg:px-[150px] lg:py-[84px]">
 		<div class="mb-8 flex items-center gap-3 text-sm text-neutral-500">
-			<a href="<?php echo esc_url(home_url('/')); ?>" class="transition duration-250 hover:text-secondary-500"><?php esc_html_e('Início', 'frusantos'); ?></a>
+			<a href="<?php echo esc_url(frusantos_home_url()); ?>" class="transition duration-250 hover:text-secondary-500"><?php esc_html_e('Início', 'frusantos'); ?></a>
 			<span class="text-neutral-300">/</span>
 			<span class="font-semibold text-ink"><?php esc_html_e('Loja', 'frusantos'); ?></span>
 		</div>

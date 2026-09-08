@@ -11,7 +11,7 @@
 			<?php if (has_custom_logo()) : ?>
 				<?php the_custom_logo(); ?>
 			<?php else : ?>
-				<a href="<?php echo esc_url(home_url('/')); ?>" class="mb-[22px] block">
+				<a href="<?php echo esc_url(frusantos_home_url()); ?>" class="mb-[22px] block">
 					<img
 						src="<?php echo esc_url(FRUSANTOS_URI . '/assets/images/logo.png'); ?>"
 						alt="<?php bloginfo('name'); ?>"

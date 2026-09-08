@@ -11,6 +11,91 @@ if (!defined('ABSPATH')) {
 }
 
 /**
+ * URL de uma página fixa do tema (marcas, loja, contactos, …) já no idioma
+ * atual. Todas as traduções destas páginas usam o MESMO slug (só o prefixo
+ * /en//fr//es/ muda, via Polylang) — por isso basta juntar o slug à raiz do
+ * idioma atual, em vez de um home_url('/slug/') fixo que ficaria sempre em
+ * português. Sem Polylang ativo, cai para home_url() normal.
+ */
+/**
+ * Cada página fixa tem um slug diferente por idioma (URLs traduzidas a
+ * sério, ex: /marcas/ em português mas /en/brands/ em inglês — em vez de
+ * forçar o mesmo slug em todas as línguas, que criava páginas ambíguas
+ * para o WordPress/Polylang e confundia o redirecionamento canónico).
+ * A chave usada em todo o tema continua a ser sempre o slug em português.
+ */
+function frusantos_lang_slug(string $key): string {
+	$map = [
+		'marcas'               => ['en' => 'brands', 'fr' => 'marques', 'es' => 'marcas'],
+		'sobre-nos'            => ['en' => 'about-us', 'fr' => 'entreprise', 'es' => 'sobre-nosotros'],
+		'loja'                 => ['en' => 'shop', 'fr' => 'boutique', 'es' => 'tienda'],
+		'blog'                 => ['en' => 'news', 'fr' => 'actualites', 'es' => 'comunicacion'],
+		'contactos'            => ['en' => 'contact', 'fr' => 'contacts', 'es' => 'contacto'],
+		'alojamentos'          => ['en' => 'accommodation', 'fr' => 'hebergements', 'es' => 'alojamientos'],
+		'politica-privacidade' => ['en' => 'privacy-policy', 'fr' => 'politique-de-confidentialite', 'es' => 'politica-de-privacidad'],
+		'termos-condicoes'     => ['en' => 'terms-and-conditions', 'fr' => 'conditions-generales', 'es' => 'terminos-y-condiciones'],
+		'litigios-online'      => ['en' => 'online-dispute-resolution', 'fr' => 'litiges-en-ligne', 'es' => 'litigios-en-linea'],
+	];
+
+	$lang = function_exists('pll_current_language') ? pll_current_language() : 'pt';
+
+	return $map[$key][$lang] ?? $key;
+}
+
+function frusantos_lang_url(string $slug): string {
+	$localized = frusantos_lang_slug($slug);
+
+	if (function_exists('pll_home_url')) {
+		return trailingslashit(pll_home_url()) . $localized . '/';
+	}
+
+	return home_url('/' . $localized . '/');
+}
+
+/**
+ * Início do site no idioma atual (equivalente a home_url('/'), mas
+ * respeitando o prefixo /en//fr//es/ do Polylang).
+ */
+function frusantos_home_url(): string {
+	return function_exists('pll_home_url') ? pll_home_url() : home_url('/');
+}
+
+/**
+ * Lista de bandeiras para trocar de idioma (PT/EN/FR/ES, via Polylang).
+ * Cada bandeira liga à tradução da página atual, ou à página inicial
+ * desse idioma se essa tradução ainda não existir. Usado no cabeçalho
+ * (desktop) e no menu mobile — mesma função, o botão de idioma ativo
+ * fica destacado com um anel verde em ambos.
+ */
+function frusantos_language_switcher(): void {
+	if (!function_exists('pll_the_languages')) {
+		return;
+	}
+
+	$languages = pll_the_languages(['raw' => 1, 'hide_if_empty' => 0]);
+	if (empty($languages)) {
+		return;
+	}
+	?>
+	<div class="flex items-center gap-2" role="group" aria-label="<?php esc_attr_e('Idioma', 'frusantos'); ?>">
+		<?php foreach ($languages as $language) : ?>
+			<a
+				href="<?php echo esc_url($language['url']); ?>"
+				class="block rounded-sm transition duration-250 <?php echo $language['current_lang'] ? 'ring-2 ring-primary-400' : 'opacity-60 hover:opacity-100'; ?>"
+				<?php echo $language['current_lang'] ? 'aria-current="true"' : ''; ?>
+			>
+				<img
+					src="<?php echo esc_url(FRUSANTOS_URI . '/assets/images/flag-' . $language['slug'] . '.svg'); ?>"
+					alt="<?php echo esc_attr($language['name']); ?>"
+					class="block h-4 w-5 rounded-sm object-cover"
+				>
+			</a>
+		<?php endforeach; ?>
+	</div>
+	<?php
+}
+
+/**
  * Data de publicação, formatada e com <time> semântico.
  */
 function frusantos_posted_on(): void {
@@ -86,27 +171,27 @@ function frusantos_nav_links(): array {
 	return [
 		[
 			'label' => __('A Empresa', 'frusantos'),
-			'url'   => home_url('/sobre-nos/'),
+			'url'   => frusantos_lang_url('sobre-nos'),
 		],
 		[
 			'label' => __('Marcas', 'frusantos'),
-			'url'   => home_url('/marcas/'),
+			'url'   => frusantos_lang_url('marcas'),
 		],
 		[
 			'label' => __('Comunicação', 'frusantos'),
-			'url'   => home_url('/blog/'),
+			'url'   => frusantos_lang_url('blog'),
 		],
 		[
 			'label' => __('Loja', 'frusantos'),
-			'url'   => class_exists('WooCommerce') ? wc_get_page_permalink('shop') : home_url('/loja/'),
+			'url'   => class_exists('WooCommerce') ? wc_get_page_permalink('shop') : frusantos_lang_url('loja'),
 		],
 		[
 			'label' => __('Alojamentos', 'frusantos'),
-			'url'   => home_url('/alojamentos/'),
+			'url'   => frusantos_lang_url('alojamentos'),
 		],
 		[
 			'label' => __('Contactos', 'frusantos'),
-			'url'   => home_url('/contactos/'),
+			'url'   => frusantos_lang_url('contactos'),
 		],
 	];
 }
@@ -137,15 +222,15 @@ function frusantos_footer_menu_fallback(array $args): void {
 	$links = [
 		[
 			'label' => __('Política de Privacidade', 'frusantos'),
-			'url'   => home_url('/politica-privacidade/'),
+			'url'   => frusantos_lang_url('politica-privacidade'),
 		],
 		[
 			'label' => __('Termos e Condições', 'frusantos'),
-			'url'   => home_url('/termos-condicoes/'),
+			'url'   => frusantos_lang_url('termos-condicoes'),
 		],
 		[
 			'label' => __('Litígios Online', 'frusantos'),
-			'url'   => home_url('/litigios-online/'),
+			'url'   => frusantos_lang_url('litigios-online'),
 		],
 	];
 

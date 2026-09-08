@@ -90,7 +90,7 @@ $frusantos_tabs = [
 				<?php esc_html_e('Produção, comercialização e distribuição de produtos agrícolas, no mercado nacional e internacional.', 'frusantos'); ?>
 			</p>
 			<div class="mt-9 flex flex-wrap gap-3">
-				<a href="<?php echo esc_url(home_url('/contactos/')); ?>" class="btn-primary"><?php esc_html_e('Contactar a empresa', 'frusantos'); ?></a>
+				<a href="<?php echo esc_url(frusantos_lang_url('contactos')); ?>" class="btn-primary"><?php esc_html_e('Contactar a empresa', 'frusantos'); ?></a>
 				<a href="#galeria" class="btn-outline"><?php esc_html_e('Ver a galeria', 'frusantos'); ?></a>
 			</div>
 		</div>
@@ -183,7 +183,7 @@ $frusantos_tabs = [
 			</div>
 			<div class="flex flex-col justify-between gap-7 rounded-theme bg-slate p-8 text-white">
 				<p class="text-xl font-semibold leading-relaxed"><?php esc_html_e('Continuamos a trabalhar na identificação de parceiros comerciais, dispostos a valorizar os nossos produtos, em novos mercados.', 'frusantos'); ?></p>
-				<a href="<?php echo esc_url(home_url('/contactos/')); ?>" class="btn-primary self-start"><?php esc_html_e('Falar com a Frusantos', 'frusantos'); ?></a>
+				<a href="<?php echo esc_url(frusantos_lang_url('contactos')); ?>" class="btn-primary self-start"><?php esc_html_e('Falar com a Frusantos', 'frusantos'); ?></a>
 			</div>
 		</div>
 	</section>

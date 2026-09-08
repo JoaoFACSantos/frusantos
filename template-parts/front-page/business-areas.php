@@ -38,7 +38,7 @@ $frusantos_areas = [
 	<div class="grid gap-5 md:grid-cols-3">
 		<?php foreach ($frusantos_areas as $i => $area) : ?>
 			<a
-				href="<?php echo esc_url(home_url('/sobre-nos/')); ?>"
+				href="<?php echo esc_url(frusantos_lang_url('sobre-nos')); ?>"
 				class="fade-in-up group overflow-hidden rounded-theme border border-neutral-200 bg-white transition duration-300 hover:-translate-y-1.5 hover:border-primary-300 hover:shadow-soft"
 				style="transition-delay: <?php echo esc_attr($i * 75); ?>ms"
 			>

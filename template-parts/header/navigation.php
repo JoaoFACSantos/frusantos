@@ -58,21 +58,7 @@
 		</svg>
 	</button>
 
-	<?php
-	/**
-	 * Seletor de idioma — só o PT existe de facto (o site ainda não tem
-	 * versão inglesa), por isso a bandeira EN fica visível mas inativa
-	 * em vez de ser um link falso para nenhum lado.
-	 */
-	?>
-	<div class="flex items-center gap-2" role="group" aria-label="<?php esc_attr_e('Idioma', 'frusantos'); ?>">
-		<span class="rounded-sm ring-2 ring-primary-400" aria-current="true">
-			<img src="<?php echo esc_url(FRUSANTOS_URI . '/assets/images/flag-pt.svg'); ?>" alt="<?php esc_attr_e('Português', 'frusantos'); ?>" class="block h-4 w-5 rounded-sm object-cover">
-		</span>
-		<span class="rounded-sm opacity-40" title="<?php esc_attr_e('Versão em inglês brevemente disponível', 'frusantos'); ?>">
-			<img src="<?php echo esc_url(FRUSANTOS_URI . '/assets/images/flag-en.svg'); ?>" alt="English" class="block h-4 w-5 rounded-sm object-cover">
-		</span>
-	</div>
+	<?php frusantos_language_switcher(); ?>
 </div>
 
 <button type="button" class="lg:hidden" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu">
@@ -103,14 +89,8 @@
 		</button>
 	</form>
 
-	<div class="mt-6 flex items-center gap-3 border-t border-neutral-200 pt-6" role="group" aria-label="<?php esc_attr_e('Idioma', 'frusantos'); ?>">
-		<span class="rounded-sm ring-2 ring-primary-400" aria-current="true">
-			<img src="<?php echo esc_url(FRUSANTOS_URI . '/assets/images/flag-pt.svg'); ?>" alt="<?php esc_attr_e('Português', 'frusantos'); ?>" class="block h-4 w-5 rounded-sm object-cover">
-		</span>
-		<span class="rounded-sm opacity-40">
-			<img src="<?php echo esc_url(FRUSANTOS_URI . '/assets/images/flag-en.svg'); ?>" alt="English" class="block h-4 w-5 rounded-sm object-cover">
-		</span>
-		<span class="text-xs normal-case tracking-normal text-neutral-500"><?php esc_html_e('Versão em inglês brevemente disponível', 'frusantos'); ?></span>
+	<div class="mt-6 border-t border-neutral-200 pt-6">
+		<?php frusantos_language_switcher(); ?>
 	</div>
 </div>
 

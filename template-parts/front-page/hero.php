@@ -33,10 +33,10 @@
 		</p>
 
 		<div class="flex flex-wrap gap-3">
-			<a href="<?php echo esc_url(home_url('/marcas/')); ?>" class="btn-primary">
+			<a href="<?php echo esc_url(frusantos_lang_url('marcas')); ?>" class="btn-primary">
 				<?php esc_html_e('Conheça as nossas marcas', 'frusantos'); ?>
 			</a>
-			<a href="<?php echo esc_url(home_url('/contactos/')); ?>" class="btn-outline">
+			<a href="<?php echo esc_url(frusantos_lang_url('contactos')); ?>" class="btn-outline">
 				<?php esc_html_e('Contactar a empresa', 'frusantos'); ?>
 			</a>
 		</div>

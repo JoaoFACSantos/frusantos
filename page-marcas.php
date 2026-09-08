@@ -71,7 +71,7 @@ get_header();
 			<p class="text-base leading-relaxed text-neutral-700 sm:text-lg">
 				<?php esc_html_e('Palavra portuguesa sem tradução, reconhecida mundialmente, de personalidade forte e relacional, que tão bem caracteriza Portugal — é a marca que dá corpo, forma e rosto aos nossos produtos, a maioria deles sazonais, cujas características, qualidade e sabor nos despertam saudade e nos transportam para boas memórias e sentimentos universais.', 'frusantos'); ?>
 			</p>
-			<a href="<?php echo esc_url(class_exists('WooCommerce') ? wc_get_page_permalink('shop') : home_url('/loja/')); ?>" class="link-underline mt-7 inline-flex items-center gap-2">
+			<a href="<?php echo esc_url(class_exists('WooCommerce') ? wc_get_page_permalink('shop') : frusantos_lang_url('loja')); ?>" class="link-underline mt-7 inline-flex items-center gap-2">
 				<?php esc_html_e('Ver produtos na loja', 'frusantos'); ?> <span aria-hidden="true">&rarr;</span>
 			</a>
 		</div>
@@ -87,7 +87,7 @@ get_header();
 			<p class="text-base leading-relaxed text-neutral-700 sm:text-lg">
 				<?php esc_html_e('Inspirada no rio Távora, que nasce na região e vai desaguar no rio Douro, guiando-nos por magníficas paisagens de vales rasgados, montanhas imponentes e encostas verdejantes com soutos de castanheiros, vinhas, olivais e searas — onde selecionamos a Flor do Távora, um azeite de sabor e aroma inconfundíveis.', 'frusantos'); ?>
 			</p>
-			<a href="<?php echo esc_url(class_exists('WooCommerce') ? wc_get_page_permalink('shop') : home_url('/loja/')); ?>" class="link-underline mt-7 inline-flex items-center gap-2">
+			<a href="<?php echo esc_url(class_exists('WooCommerce') ? wc_get_page_permalink('shop') : frusantos_lang_url('loja')); ?>" class="link-underline mt-7 inline-flex items-center gap-2">
 				<?php esc_html_e('Ver produtos na loja', 'frusantos'); ?> <span aria-hidden="true">&rarr;</span>
 			</a>
 		</div>

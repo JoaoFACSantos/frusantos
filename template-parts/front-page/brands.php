@@ -26,7 +26,7 @@ $frusantos_brands = [
 			<p class="eyebrow"><?php esc_html_e('Marcas próprias', 'frusantos'); ?></p>
 			<h2 class="text-2xl sm:text-4xl"><?php esc_html_e('As nossas marcas', 'frusantos'); ?></h2>
 		</div>
-		<a href="<?php echo esc_url(home_url('/marcas/')); ?>" class="link-underline hidden sm:inline-block">
+		<a href="<?php echo esc_url(frusantos_lang_url('marcas')); ?>" class="link-underline hidden sm:inline-block">
 			<?php esc_html_e('Ver todas', 'frusantos'); ?>
 		</a>
 	</div>
@@ -34,7 +34,7 @@ $frusantos_brands = [
 	<div class="grid max-w-2xl grid-cols-2 gap-5">
 		<?php foreach ($frusantos_brands as $frusantos_i => $frusantos_brand) : ?>
 			<a
-				href="<?php echo esc_url(home_url('/marcas/')); ?>"
+				href="<?php echo esc_url(frusantos_lang_url('marcas')); ?>"
 				class="fade-in-up group flex aspect-[3/2] items-center justify-center overflow-hidden rounded-2xl border border-neutral-200 bg-white p-8 transition duration-300 hover:-translate-y-1.5 hover:border-primary-300 hover:shadow-soft"
 				style="transition-delay: <?php echo esc_attr($frusantos_i * 75); ?>ms;"
 			>
@@ -46,7 +46,7 @@ $frusantos_brands = [
 				>
 			</a>
 		<?php endforeach; ?>
-		<a href="<?php echo esc_url(home_url('/marcas/')); ?>" class="fade-in-up sm:hidden col-span-2 link-underline mt-2 text-center">
+		<a href="<?php echo esc_url(frusantos_lang_url('marcas')); ?>" class="fade-in-up sm:hidden col-span-2 link-underline mt-2 text-center">
 			<?php esc_html_e('Ver todas as marcas', 'frusantos'); ?>
 		</a>
 	</div>

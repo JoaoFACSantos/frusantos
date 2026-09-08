@@ -27,7 +27,7 @@ if (!$frusantos_latest->have_posts()) {
 			<p class="eyebrow"><?php esc_html_e('Comunicação', 'frusantos'); ?></p>
 			<h2 class="text-2xl sm:text-4xl"><?php esc_html_e('Novidades sempre fresquinhas', 'frusantos'); ?></h2>
 		</div>
-		<a href="<?php echo esc_url(home_url('/blog/')); ?>" class="link-underline hidden sm:inline-block">
+		<a href="<?php echo esc_url(frusantos_lang_url('blog')); ?>" class="link-underline hidden sm:inline-block">
 			<?php esc_html_e('Toda a comunicação', 'frusantos'); ?>
 		</a>
 	</div>

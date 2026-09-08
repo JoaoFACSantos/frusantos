@@ -34,7 +34,7 @@ function frusantos_blog_filter_url(string $slug): string {
 	if ($slug) {
 		$args['categoria'] = $slug;
 	}
-	return $args ? add_query_arg($args, home_url('/blog/')) : home_url('/blog/');
+	return $args ? add_query_arg($args, frusantos_lang_url('blog')) : frusantos_lang_url('blog');
 }
 
 $frusantos_query_args = [
@@ -179,7 +179,7 @@ $frusantos_has_featured = 1 === $frusantos_paged && $frusantos_posts->found_post
 				?>
 				<div class="mt-11 flex flex-wrap items-center justify-center gap-2.5">
 					<?php for ($frusantos_p = 1; $frusantos_p <= $frusantos_total_pages; $frusantos_p++) : ?>
-						<?php $frusantos_page_url = add_query_arg(array_filter(['categoria' => $frusantos_categoria, 'pg' => 1 === $frusantos_p ? null : $frusantos_p]), home_url('/blog/')); ?>
+						<?php $frusantos_page_url = add_query_arg(array_filter(['categoria' => $frusantos_categoria, 'pg' => 1 === $frusantos_p ? null : $frusantos_p]), frusantos_lang_url('blog')); ?>
 						<a
 							href="<?php echo esc_url($frusantos_page_url); ?>"
 							class="flex h-11 w-11 items-center justify-center rounded-full text-sm font-bold transition duration-250 <?php echo $frusantos_p === $frusantos_paged ? 'bg-secondary-500 text-white' : 'border border-neutral-300 text-ink hover:border-secondary-500 hover:text-secondary-500'; ?>"

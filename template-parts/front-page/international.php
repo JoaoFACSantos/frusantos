@@ -21,7 +21,7 @@
 			<a href="<?php echo esc_url(home_url('/projeto-de-internacionalizacao-da-frusantos/')); ?>" class="btn-accent">
 				<?php esc_html_e('Conhecer o projeto', 'frusantos'); ?>
 			</a>
-			<a href="<?php echo esc_url(home_url('/contactos/')); ?>" class="inline-block border-b-2 border-white/45 pb-1 text-[13px] font-bold uppercase tracking-[.1em] text-white transition duration-250 hover:border-white">
+			<a href="<?php echo esc_url(frusantos_lang_url('contactos')); ?>" class="inline-block border-b-2 border-white/45 pb-1 text-[13px] font-bold uppercase tracking-[.1em] text-white transition duration-250 hover:border-white">
 				<?php esc_html_e('Falar com o comercial', 'frusantos'); ?>
 			</a>
 		</div>
@@ -38,7 +38,7 @@
 				<?php esc_html_e('Disponibilidade mês a mês de castanha, azeite e hortícolas — a preencher com os dados reais de comercialização.', 'frusantos'); ?>
 			</p>
 		</div>
-		<a href="<?php echo esc_url(home_url('/contactos/')); ?>" class="mt-7 inline-block border-b-2 border-primary-400 pb-1 text-xs font-bold uppercase tracking-[.12em] text-white">
+		<a href="<?php echo esc_url(frusantos_lang_url('contactos')); ?>" class="mt-7 inline-block border-b-2 border-primary-400 pb-1 text-xs font-bold uppercase tracking-[.12em] text-white">
 			<?php esc_html_e('Saber mais', 'frusantos'); ?>
 		</a>
 	</div>

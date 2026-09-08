@@ -38,10 +38,10 @@
 			<?php esc_html_e('Procuramos marcar a diferença, valorizamos a produção portuguesa e apostamos em produtos identitários de elevada qualidade, proporcionando através das nossas marcas, experiências degustativas, sensoriais e emocionais, que nos definem e caracterizam, que são nossas, da nossa região e do nosso país, Portugal.', 'frusantos'); ?>
 		</p>
 		<div class="flex flex-wrap items-center gap-4">
-			<a href="<?php echo esc_url(home_url('/sobre-nos/')); ?>" class="btn-dark">
+			<a href="<?php echo esc_url(frusantos_lang_url('sobre-nos')); ?>" class="btn-dark">
 				<?php esc_html_e('Sobre nós', 'frusantos'); ?>
 			</a>
-			<a href="<?php echo esc_url(home_url('/marcas/')); ?>" class="link-underline">
+			<a href="<?php echo esc_url(frusantos_lang_url('marcas')); ?>" class="link-underline">
 				<?php esc_html_e('Ver as marcas', 'frusantos'); ?>
 			</a>
 		</div>
