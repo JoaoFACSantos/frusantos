@@ -123,10 +123,44 @@ function initHeaderOffset() {
   }
 }
 
+/**
+ * Separadores (tabs) genéricos — usados em "A empresa em detalhe"
+ * (page-sobre-nos.php). Botões [data-tab-button] e painéis
+ * [data-tab-panel] partilham um [data-tab-group]; clicar num botão
+ * mostra o painel com o id em [data-tab-target] e esconde os restantes
+ * do mesmo grupo. Suporta vários grupos de separadores na mesma página.
+ */
+function initTabs() {
+  const buttons = document.querySelectorAll('[data-tab-button]');
+  if (!buttons.length) return;
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const group = button.dataset.tabGroup;
+      const targetId = button.dataset.tabTarget;
+
+      document.querySelectorAll(`[data-tab-button][data-tab-group="${group}"]`).forEach((btn) => {
+        const isActive = btn === button;
+        btn.setAttribute('aria-selected', String(isActive));
+        btn.classList.toggle('bg-slate', isActive);
+        btn.classList.toggle('border-slate', isActive);
+        btn.classList.toggle('text-white', isActive);
+        btn.classList.toggle('border-neutral-300', !isActive);
+        btn.classList.toggle('text-neutral-700', !isActive);
+      });
+
+      document.querySelectorAll(`[data-tab-panel][data-tab-group="${group}"]`).forEach((panel) => {
+        panel.classList.toggle('hidden', panel.id !== targetId);
+      });
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initToggle('[data-menu-toggle]', '[data-menu-panel]');
   initToggle('[data-search-toggle]', '[data-search-panel]');
   initHeaderScroll();
   initHeaderOffset();
+  initTabs();
 });

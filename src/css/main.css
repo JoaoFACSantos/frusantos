@@ -14,6 +14,31 @@
     @apply bg-surface text-ink font-sans antialiased;
   }
 
+  /* Impede selecionar texto/imagens em todo o site — pedido explícito.
+     Nota: não impede ver código-fonte nem guardar imagens pela DevTools,
+     é só um impedimento normal de rato/toque, não proteção real de
+     conteúdo. Inputs/textareas ficam de fora, senão não dava para
+     escrever neles (pesquisa, newsletter). */
+  html {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  img {
+    -webkit-user-drag: none;
+    user-drag: none;
+    pointer-events: auto;
+  }
+
+  input,
+  textarea,
+  [contenteditable='true'] {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    user-select: text;
+  }
+
   h1, h2, h3, h4 {
     @apply font-display font-extrabold uppercase tracking-tight text-ink;
   }
