@@ -78,7 +78,7 @@ $frusantos_tabs = [
 		>
 		<div class="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/70 to-ink/40"></div>
 
-		<div class="relative px-6 py-16 sm:py-20 lg:px-[60px]">
+		<div class="relative px-6 py-16 sm:py-20 lg:px-[150px]">
 			<div class="mb-5 flex items-center gap-4">
 				<span class="h-[3px] w-14 bg-primary-400"></span>
 				<span class="font-mono text-xs uppercase tracking-[.24em] text-white"><?php esc_html_e('Frutos Selecionados, S.A.', 'frusantos'); ?></span>
@@ -96,7 +96,7 @@ $frusantos_tabs = [
 		</div>
 	</section>
 
-	<section class="fade-in-up grid gap-12 px-6 py-16 lg:grid-cols-2 lg:gap-16 lg:px-[60px] lg:py-[100px]">
+	<section class="fade-in-up grid gap-12 px-6 py-16 lg:grid-cols-2 lg:gap-16 lg:px-[150px] lg:py-[100px]">
 		<div>
 			<p class="eyebrow"><?php esc_html_e('Quem somos', 'frusantos'); ?></p>
 			<h2 class="mb-7 text-2xl leading-tight sm:text-4xl"><?php esc_html_e('Uma empresa familiar de frutos selecionados', 'frusantos'); ?></h2>
@@ -134,7 +134,7 @@ $frusantos_tabs = [
 		</div>
 	</section>
 
-	<section class="fade-in-up bg-slate px-6 py-16 text-white lg:px-[60px] lg:py-[88px]">
+	<section class="fade-in-up bg-slate px-6 py-16 text-white lg:px-[150px] lg:py-[88px]">
 		<div class="mb-10 flex flex-wrap items-end justify-between gap-6">
 			<div>
 				<p class="mb-3.5 font-mono text-xs uppercase tracking-[.22em] text-primary-300"><?php esc_html_e('Produtos', 'frusantos'); ?></p>
@@ -160,7 +160,7 @@ $frusantos_tabs = [
 		</div>
 	</section>
 
-	<section class="fade-in-up px-6 py-16 lg:px-[60px] lg:py-[100px]">
+	<section class="fade-in-up px-6 py-16 lg:px-[150px] lg:py-[100px]">
 		<p class="eyebrow"><?php esc_html_e('Mercados', 'frusantos'); ?></p>
 		<h2 class="mb-10 text-2xl sm:text-4xl"><?php esc_html_e('Onde chegamos', 'frusantos'); ?></h2>
 
@@ -188,7 +188,7 @@ $frusantos_tabs = [
 		</div>
 	</section>
 
-	<section class="fade-in-up grid gap-12 border-t border-neutral-200 px-6 py-16 lg:grid-cols-2 lg:gap-16 lg:px-[60px] lg:py-[84px]">
+	<section class="fade-in-up grid gap-12 border-t border-neutral-200 px-6 py-16 lg:grid-cols-2 lg:gap-16 lg:px-[150px] lg:py-[84px]">
 		<div>
 			<p class="eyebrow"><?php esc_html_e('Reconhecimento', 'frusantos'); ?></p>
 			<h3 class="mb-3 text-xl"><?php esc_html_e('Os nossos prémios', 'frusantos'); ?></h3>
@@ -206,7 +206,7 @@ $frusantos_tabs = [
 		</div>
 	</section>
 
-	<section class="fade-in-up grid gap-5 border-t border-neutral-200 px-6 py-16 lg:grid-cols-3 lg:px-[60px] lg:py-[96px]">
+	<section class="fade-in-up grid gap-5 border-t border-neutral-200 px-6 py-16 lg:grid-cols-3 lg:px-[150px] lg:py-[96px]">
 		<div class="flex min-h-[260px] flex-col justify-between gap-7 rounded-theme bg-slate p-8 text-white">
 			<div>
 				<p class="font-mono text-xs uppercase tracking-[.22em] text-primary-300"><?php esc_html_e('Vídeo', 'frusantos'); ?></p>
@@ -226,7 +226,7 @@ $frusantos_tabs = [
 		</div>
 	</section>
 
-	<section class="fade-in-up border-t border-neutral-200 px-6 py-16 lg:px-[60px] lg:py-[88px]">
+	<section class="fade-in-up border-t border-neutral-200 px-6 py-16 lg:px-[150px] lg:py-[88px]">
 		<p class="eyebrow"><?php esc_html_e('Detalhe', 'frusantos'); ?></p>
 		<h2 class="mb-8 text-2xl sm:text-4xl"><?php esc_html_e('A empresa em detalhe', 'frusantos'); ?></h2>
 
@@ -279,7 +279,7 @@ $frusantos_tabs = [
 		<?php endforeach; ?>
 	</section>
 
-	<section id="galeria" class="fade-in-up border-t border-neutral-200 px-6 py-16 lg:px-[60px] lg:py-[96px]">
+	<section id="galeria" class="fade-in-up border-t border-neutral-200 px-6 py-16 lg:px-[150px] lg:py-[96px]">
 		<p class="eyebrow"><?php esc_html_e('Galeria', 'frusantos'); ?></p>
 		<h2 class="mb-8 text-2xl sm:text-4xl"><?php esc_html_e('Campo, lagar e armazém', 'frusantos'); ?></h2>
 

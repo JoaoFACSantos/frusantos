@@ -21,7 +21,7 @@ if (!$frusantos_latest->have_posts()) {
 	return;
 }
 ?>
-<section class="px-6 py-16 lg:px-[60px] lg:py-[88px]">
+<section class="px-6 py-16 lg:px-[150px] lg:py-[88px]">
 	<div class="fade-in-up mb-8 flex items-end justify-between">
 		<div>
 			<p class="eyebrow"><?php esc_html_e('Comunicação', 'frusantos'); ?></p>

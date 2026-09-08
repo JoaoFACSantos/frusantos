@@ -20,7 +20,7 @@ $frusantos_brands = [
 	],
 ];
 ?>
-<section class="bg-neutral-100 px-6 py-16 lg:px-[60px] lg:py-[88px]">
+<section class="bg-neutral-100 px-6 py-16 lg:px-[150px] lg:py-[88px]">
 	<div class="fade-in-up mb-8 flex items-end justify-between">
 		<div>
 			<p class="eyebrow"><?php esc_html_e('Marcas próprias', 'frusantos'); ?></p>

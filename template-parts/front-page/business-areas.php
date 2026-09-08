@@ -26,7 +26,7 @@ $frusantos_areas = [
 	],
 ];
 ?>
-<section class="px-6 pb-16 lg:px-[60px] lg:pb-[96px]">
+<section class="px-6 pb-16 lg:px-[150px] lg:pb-[96px]">
 	<div class="fade-in-up mb-8 flex items-end justify-between">
 		<div>
 			<p class="eyebrow"><?php esc_html_e('Áreas de negócio', 'frusantos'); ?></p>

@@ -16,7 +16,7 @@
 	>
 	<div class="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/60 to-ink/10 sm:via-ink/50 sm:to-ink/10"></div>
 
-	<div class="relative flex h-full max-w-3xl flex-col justify-center px-6 text-white lg:px-[60px]">
+	<div class="relative flex h-full max-w-3xl flex-col justify-center px-6 text-white lg:px-[150px]">
 		<div class="mb-6 flex items-center gap-3.5">
 			<span class="h-[3px] w-12 bg-primary-400"></span>
 			<span class="font-mono text-xs uppercase tracking-[.24em] text-slate-300">

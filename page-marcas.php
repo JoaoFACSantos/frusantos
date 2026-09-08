@@ -31,7 +31,7 @@ get_header();
 		>
 		<div class="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/70 to-ink/40"></div>
 
-		<div class="relative px-6 py-16 sm:py-20 lg:px-[60px]">
+		<div class="relative px-6 py-16 sm:py-20 lg:px-[150px]">
 			<div class="mb-5 flex items-center gap-4">
 				<span class="h-[3px] w-14 bg-primary-400"></span>
 				<span class="font-mono text-xs uppercase tracking-[.24em] text-white"><?php esc_html_e('Descubra as nossas marcas', 'frusantos'); ?></span>
@@ -53,7 +53,7 @@ get_header();
 		</div>
 	</section>
 
-	<section id="saudade" class="fade-in-up grid gap-12 px-6 py-16 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-[60px] lg:py-[130px]">
+	<section id="saudade" class="fade-in-up grid gap-12 px-6 py-16 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-[150px] lg:py-[130px]">
 		<div class="order-2 aspect-[4/3] overflow-hidden rounded-theme lg:order-1">
 			<img
 				src="<?php echo esc_url(FRUSANTOS_URI . '/assets/images/produto-saudade.jpg'); ?>"
@@ -77,7 +77,7 @@ get_header();
 		</div>
 	</section>
 
-	<section id="flor-do-tavora" class="fade-in-up grid gap-12 px-6 py-16 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-[60px] lg:py-[130px]">
+	<section id="flor-do-tavora" class="fade-in-up grid gap-12 px-6 py-16 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-[150px] lg:py-[130px]">
 		<div>
 			<img
 				src="<?php echo esc_url(FRUSANTOS_URI . '/assets/images/logo-flor-tavora.svg'); ?>"

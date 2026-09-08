@@ -62,7 +62,7 @@ $frusantos_has_featured = 1 === $frusantos_paged && $frusantos_posts->found_post
 		>
 		<div class="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/70 to-ink/30"></div>
 
-		<div class="relative px-6 py-16 lg:px-[60px]">
+		<div class="relative px-6 py-16 lg:px-[150px]">
 			<div class="mb-5 flex items-center gap-4">
 				<span class="h-[3px] w-14 bg-primary-400"></span>
 				<span class="font-mono text-xs uppercase tracking-[.24em] text-white"><?php esc_html_e('Comunicação', 'frusantos'); ?></span>
@@ -74,7 +74,7 @@ $frusantos_has_featured = 1 === $frusantos_paged && $frusantos_posts->found_post
 		</div>
 	</section>
 
-	<section class="px-6 py-16 lg:px-[60px] lg:py-[84px]">
+	<section class="px-6 py-16 lg:px-[150px] lg:py-[84px]">
 		<div class="mb-9 flex flex-wrap items-center justify-between gap-4">
 			<div class="flex flex-wrap gap-2.5">
 				<?php foreach ($frusantos_filters as $slug => $label) : ?>

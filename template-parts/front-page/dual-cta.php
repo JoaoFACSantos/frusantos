@@ -25,7 +25,7 @@ $frusantos_cta_cards = [
 	],
 ];
 ?>
-<section class="grid gap-5 px-6 pb-16 sm:grid-cols-2 lg:px-[60px] lg:pb-[88px]">
+<section class="grid gap-5 px-6 pb-16 sm:grid-cols-2 lg:px-[150px] lg:pb-[88px]">
 	<?php foreach ($frusantos_cta_cards as $frusantos_i => $card) : ?>
 		<a
 			href="<?php echo esc_url($card['url']); ?>"

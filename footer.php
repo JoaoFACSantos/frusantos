@@ -5,7 +5,7 @@
  * @package Frusantos
  */
 ?>
-<footer id="colophon" class="bg-ink px-6 pb-7 pt-16 text-slate-200 lg:px-[60px] lg:pt-[72px]">
+<footer id="colophon" class="bg-ink px-6 pb-7 pt-16 text-slate-200 lg:px-[150px] lg:pt-[72px]">
 	<div class="grid gap-12 border-b border-white/10 pb-12 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-12 lg:pb-12">
 		<div>
 			<?php if (has_custom_logo()) : ?>

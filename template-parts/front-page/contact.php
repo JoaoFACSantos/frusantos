@@ -29,7 +29,7 @@ $frusantos_contact_rows = [
 	],
 ];
 ?>
-<section class="grid gap-12 bg-neutral-100 px-6 py-16 lg:grid-cols-2 lg:gap-16 lg:px-[60px] lg:py-20">
+<section class="grid gap-12 bg-neutral-100 px-6 py-16 lg:grid-cols-2 lg:gap-16 lg:px-[150px] lg:py-20">
 	<div class="fade-in-up">
 		<p class="eyebrow"><?php esc_html_e('Contactos', 'frusantos'); ?></p>
 		<h2 class="mb-6 text-2xl sm:text-4xl"><?php esc_html_e('Fale connosco', 'frusantos'); ?></h2>

@@ -8,7 +8,7 @@
  * @package Frusantos
  */
 ?>
-<section class="grid gap-10 bg-slate px-6 py-16 text-white lg:grid-cols-[1fr_1.15fr] lg:gap-16 lg:px-[60px] lg:py-[88px]">
+<section class="grid gap-10 bg-slate px-6 py-16 text-white lg:grid-cols-[1fr_1.15fr] lg:gap-16 lg:px-[150px] lg:py-[88px]">
 	<div class="fade-in-up">
 		<p class="mb-[18px] font-mono text-xs uppercase tracking-[.22em] text-primary-300"><?php esc_html_e('Internacionalização', 'frusantos'); ?></p>
 		<h2 class="mb-5 text-2xl leading-tight sm:text-4xl sm:leading-[1.08]">

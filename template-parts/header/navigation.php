@@ -115,7 +115,7 @@
 </div>
 
 <div id="site-search-panel" class="hidden absolute inset-x-0 top-full border-b border-neutral-200 bg-surface shadow-soft" data-search-panel>
-	<form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="mx-auto flex max-w-[1440px] items-center gap-4 px-6 py-6 lg:px-[60px]">
+	<form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="mx-auto flex max-w-[1440px] items-center gap-4 px-6 py-6 lg:px-[150px]">
 		<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="shrink-0 text-neutral-400" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path stroke-linecap="round" d="m20 20-3.2-3.2" /></svg>
 		<label class="sr-only" for="site-search-input"><?php esc_html_e('Pesquisar', 'frusantos'); ?></label>
 		<input type="search" id="site-search-input" name="s" placeholder="<?php esc_attr_e('Pesquisar no site…', 'frusantos'); ?>" class="w-full border-0 bg-transparent text-lg normal-case tracking-normal text-ink placeholder:text-neutral-400 focus:outline-none" autocomplete="off">

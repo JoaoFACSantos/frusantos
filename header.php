@@ -26,7 +26,7 @@
 	<?php get_template_part('template-parts/header/utility-bar'); ?>
 
 	<header id="masthead" class="border-b border-neutral-200">
-		<div class="relative mx-auto flex max-w-[1440px] items-center justify-between px-6 py-4 transition-[padding] duration-300 ease-out lg:px-[60px]" data-header-row>
+		<div class="relative mx-auto flex max-w-[1440px] items-center justify-between px-6 py-4 transition-[padding] duration-300 ease-out lg:px-[150px]" data-header-row>
 			<?php get_template_part('template-parts/header/branding'); ?>
 			<?php get_template_part('template-parts/header/navigation'); ?>
 		</div>

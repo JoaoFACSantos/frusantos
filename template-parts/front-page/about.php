@@ -6,7 +6,7 @@
  * @package Frusantos
  */
 ?>
-<section class="fade-in-up grid gap-10 px-6 py-16 lg:grid-cols-2 lg:items-center lg:gap-[72px] lg:px-[60px] lg:py-[96px]">
+<section class="fade-in-up grid gap-10 px-6 py-16 lg:grid-cols-2 lg:items-center lg:gap-[72px] lg:px-[150px] lg:py-[96px]">
 	<div class="grid grid-cols-2 grid-rows-[160px_200px] gap-3 sm:grid-rows-[200px_240px] sm:gap-4">
 		<img
 			src="<?php echo esc_url(FRUSANTOS_URI . '/assets/images/hero-castanha.webp'); ?>"
