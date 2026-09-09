@@ -82,7 +82,7 @@ get_header();
 			<img
 				src="<?php echo esc_url(FRUSANTOS_URI . '/assets/images/logo-flor-tavora.svg'); ?>"
 				alt="<?php esc_attr_e('Flôr do Távora', 'frusantos'); ?>"
-				class="mx-auto mb-8 h-auto w-full max-w-[420px]"
+				class="mx-auto mb-8 h-auto w-full max-w-[480px]"
 			>
 			<p class="text-base leading-relaxed text-neutral-700 sm:text-lg">
 				<?php esc_html_e('Inspirada no rio Távora, que nasce na região e vai desaguar no rio Douro, guiando-nos por magníficas paisagens de vales rasgados, montanhas imponentes e encostas verdejantes com soutos de castanheiros, vinhas, olivais e searas — onde selecionamos a Flor do Távora, um azeite de sabor e aroma inconfundíveis.', 'frusantos'); ?>
