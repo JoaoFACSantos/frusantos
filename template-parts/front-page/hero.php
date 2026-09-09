@@ -7,7 +7,7 @@
  * @package Frusantos
  */
 ?>
-<section class="relative h-[420px] overflow-hidden sm:h-[560px] lg:h-[680px]">
+<section class="relative min-h-[420px] overflow-hidden sm:min-h-[560px] lg:min-h-[680px]">
 	<img
 		src="<?php echo esc_url(FRUSANTOS_URI . '/assets/images/hero-full.webp'); ?>"
 		alt=""
@@ -16,7 +16,7 @@
 	>
 	<div class="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/60 to-ink/10 sm:via-ink/50 sm:to-ink/10"></div>
 
-	<div class="relative flex h-full max-w-3xl flex-col justify-center px-6 text-white lg:px-[150px]">
+	<div class="relative flex min-h-[420px] max-w-4xl flex-col justify-center px-6 py-16 text-white sm:min-h-[560px] lg:min-h-[680px] lg:px-[150px]">
 		<div class="mb-6 flex items-center gap-3.5">
 			<span class="h-[3px] w-12 bg-primary-400"></span>
 			<span class="font-mono text-xs uppercase tracking-[.24em] text-slate-300">
@@ -24,7 +24,7 @@
 			</span>
 		</div>
 
-		<h1 class="mb-6 text-3xl leading-[1.05] text-primary-400 sm:text-5xl lg:text-[78px] lg:leading-[1.02]">
+		<h1 class="mb-6 text-3xl leading-[1.05] text-primary-400 [text-wrap:balance] sm:text-5xl lg:text-[64px] lg:leading-[1.08]">
 			<?php esc_html_e('Sabores que se sentem há 35 anos', 'frusantos'); ?>
 		</h1>
 
