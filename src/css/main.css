@@ -43,6 +43,15 @@
     @apply font-display font-extrabold uppercase tracking-tight text-ink;
   }
 
+  /* O browser desenha o seu próprio botão de limpar (x) dentro de
+     inputs type="search" — sobrepunha-se ao nosso ícone/seta e ficava
+     ilegível. Escondido para usar só a nossa própria UI. */
+  input[type='search']::-webkit-search-cancel-button,
+  input[type='search']::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
   ::selection {
     @apply bg-primary-200 text-ink;
   }
