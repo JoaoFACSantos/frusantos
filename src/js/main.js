@@ -49,6 +49,23 @@ function initToggle(toggleSelector, panelSelector) {
 }
 
 /**
+ * Botão de fechar dentro do painel de pesquisa (ver initToggle acima) —
+ * separado porque initToggle só liga UM botão a UM painel, e a pesquisa
+ * já tem o ícone da barra a abrir o painel.
+ */
+function initSearchClose() {
+  const closeButton = document.querySelector('[data-search-close]');
+  const panel = document.querySelector('[data-search-panel]');
+  const toggle = document.querySelector('[data-search-toggle]');
+  if (!closeButton || !panel) return;
+
+  closeButton.addEventListener('click', () => {
+    panel.classList.add('hidden');
+    toggle?.setAttribute('aria-expanded', 'false');
+  });
+}
+
+/**
  * Cabeçalho fixo — adiciona .is-scrolled a #site-header a partir de um
  * limiar de scroll, para a barra de utilidade colapsar e o cabeçalho
  * encolher (transições em src/css/main.css).
@@ -353,6 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initToggle('[data-menu-toggle]', '[data-menu-panel]');
   initToggle('[data-search-toggle]', '[data-search-panel]');
+  initSearchClose();
   initHeaderScroll();
   initHeaderOffset();
   initTabs();
