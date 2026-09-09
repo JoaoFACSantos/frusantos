@@ -61,11 +61,12 @@ function frusantos_home_url(): string {
 }
 
 /**
- * Lista de bandeiras para trocar de idioma (PT/EN/FR/ES, via Polylang).
+ * Seletor de idioma (PT/EN/FR/ES, via Polylang) — só a bandeira atual
+ * fica visível; ao clicar abre uma lista com as restantes por baixo.
  * Cada bandeira liga à tradução da página atual, ou à página inicial
  * desse idioma se essa tradução ainda não existir. Usado no cabeçalho
- * (desktop) e no menu mobile — mesma função, o botão de idioma ativo
- * fica destacado com um anel verde em ambos.
+ * (desktop) e no menu mobile — a função é chamada duas vezes na mesma
+ * página, por isso o id do painel tem de ser único em cada chamada.
  */
 function frusantos_language_switcher(): void {
 	if (!function_exists('pll_the_languages')) {
@@ -76,21 +77,63 @@ function frusantos_language_switcher(): void {
 	if (empty($languages)) {
 		return;
 	}
+
+	static $frusantos_lang_switcher_instance = 0;
+	$frusantos_lang_switcher_instance++;
+	$panel_id = 'lang-panel-' . $frusantos_lang_switcher_instance;
+
+	$current = null;
+	foreach ($languages as $language) {
+		if ($language['current_lang']) {
+			$current = $language;
+			break;
+		}
+	}
+	$current = $current ?? reset($languages);
 	?>
-	<div class="flex items-center gap-2" role="group" aria-label="<?php esc_attr_e('Idioma', 'frusantos'); ?>">
-		<?php foreach ($languages as $language) : ?>
-			<a
-				href="<?php echo esc_url($language['url']); ?>"
-				class="block rounded-sm transition duration-250 <?php echo $language['current_lang'] ? 'ring-2 ring-primary-400' : 'opacity-60 hover:opacity-100'; ?>"
-				<?php echo $language['current_lang'] ? 'aria-current="true"' : ''; ?>
+	<div class="relative">
+		<button
+			type="button"
+			class="flex items-center gap-1.5"
+			data-lang-toggle
+			aria-expanded="false"
+			aria-controls="<?php echo esc_attr($panel_id); ?>"
+		>
+			<span class="sr-only"><?php esc_html_e('Idioma', 'frusantos'); ?>: <?php echo esc_html($current['name']); ?></span>
+			<img
+				src="<?php echo esc_url(FRUSANTOS_URI . '/assets/images/flag-' . $current['slug'] . '.svg'); ?>"
+				alt=""
+				aria-hidden="true"
+				class="block h-4 w-5 rounded-sm object-cover"
 			>
-				<img
-					src="<?php echo esc_url(FRUSANTOS_URI . '/assets/images/flag-' . $language['slug'] . '.svg'); ?>"
-					alt="<?php echo esc_attr($language['name']); ?>"
-					class="block h-4 w-5 rounded-sm object-cover"
+			<svg data-lang-caret width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" class="text-neutral-500 transition duration-250">
+				<path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6" />
+			</svg>
+		</button>
+
+		<div
+			id="<?php echo esc_attr($panel_id); ?>"
+			data-lang-panel
+			role="group"
+			aria-label="<?php esc_attr_e('Idioma', 'frusantos'); ?>"
+			class="hidden absolute right-0 top-full z-10 mt-2 min-w-[170px] rounded-theme border border-neutral-200 bg-white py-2 shadow-soft"
+		>
+			<?php foreach ($languages as $language) : ?>
+				<a
+					href="<?php echo esc_url($language['url']); ?>"
+					class="flex items-center gap-2.5 px-4 py-2 text-sm normal-case tracking-normal transition duration-250 <?php echo $language['current_lang'] ? 'font-semibold text-ink' : 'text-neutral-600 hover:bg-neutral-100'; ?>"
+					<?php echo $language['current_lang'] ? 'aria-current="true"' : ''; ?>
 				>
-			</a>
-		<?php endforeach; ?>
+					<img
+						src="<?php echo esc_url(FRUSANTOS_URI . '/assets/images/flag-' . $language['slug'] . '.svg'); ?>"
+						alt=""
+						aria-hidden="true"
+						class="block h-4 w-5 rounded-sm object-cover"
+					>
+					<?php echo esc_html($language['name']); ?>
+				</a>
+			<?php endforeach; ?>
+		</div>
 	</div>
 	<?php
 }

@@ -308,6 +308,47 @@ function initShopPage() {
   renderList();
 }
 
+/**
+ * Seletor de idioma (ver frusantos_language_switcher() em
+ * inc/template-tags.php) — a função pode aparecer duas vezes na mesma
+ * página (cabeçalho desktop + menu mobile), por isso cada botão
+ * [data-lang-toggle] controla o [data-lang-panel] dentro do seu próprio
+ * wrapper `.relative`, em vez de um único toggle/painel fixo como
+ * initToggle(). Fecha também ao clicar fora.
+ */
+function initLanguageSwitcher() {
+  const toggles = document.querySelectorAll('[data-lang-toggle]');
+  if (!toggles.length) return;
+
+  function close(toggle) {
+    const wrapper = toggle.closest('.relative');
+    const panel = wrapper?.querySelector('[data-lang-panel]');
+    if (!panel) return;
+    panel.classList.add('hidden');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.querySelector('[data-lang-caret]')?.classList.remove('rotate-180');
+  }
+
+  toggles.forEach((toggle) => {
+    const wrapper = toggle.closest('.relative');
+    const panel = wrapper?.querySelector('[data-lang-panel]');
+    if (!panel) return;
+
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      toggles.forEach(close);
+      if (!isOpen) {
+        panel.classList.remove('hidden');
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.querySelector('[data-lang-caret]')?.classList.add('rotate-180');
+      }
+    });
+  });
+
+  document.addEventListener('click', () => toggles.forEach(close));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initToggle('[data-menu-toggle]', '[data-menu-panel]');
@@ -316,4 +357,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeaderOffset();
   initTabs();
   initShopPage();
+  initLanguageSwitcher();
 });
