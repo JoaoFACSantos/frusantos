@@ -411,6 +411,34 @@ function initLanguageSwitcher() {
   document.addEventListener('click', () => toggles.forEach(close));
 }
 
+/**
+ * Formulário de contacto (page-contactos.php) — sem back-end (não há
+ * WooCommerce nem servidor de email próprio), por isso ao submeter abre
+ * o cliente de email do próprio visitante com a mensagem preenchida, tal
+ * como o botão "Pedir lista" da Loja.
+ */
+function initContactForm() {
+  const form = document.querySelector('[data-contact-form]');
+  if (!form) return;
+
+  const confirmEl = form.querySelector('[data-contact-confirm]');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = form.elements.name.value.trim();
+    const email = form.elements.email.value.trim();
+    const subjectField = form.elements.subject.value.trim();
+    const message = form.elements.message.value.trim();
+
+    const subject = encodeURIComponent(subjectField || 'Mensagem via site — Frusantos');
+    const body = encodeURIComponent(`Nome: ${name}\nEmail: ${email}\n\n${message}`);
+
+    window.location.href = `mailto:frusantos@frusantos.com?subject=${subject}&body=${body}`;
+    confirmEl?.classList.remove('hidden');
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initToggle('[data-menu-toggle]', '[data-menu-panel]');
@@ -419,5 +447,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeaderOffset();
   initTabs();
   initShopPage();
+  initContactForm();
   initLanguageSwitcher();
 });
