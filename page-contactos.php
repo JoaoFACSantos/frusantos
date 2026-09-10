@@ -185,7 +185,7 @@ $frusantos_locations = [
 			<p class="max-w-md text-base leading-relaxed text-neutral-700"><?php esc_html_e('Três instalações entre a Beira Alta e o Ribatejo. Selecione uma para ver a morada, os contactos e o mapa.', 'frusantos'); ?></p>
 		</div>
 
-		<div class="grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:gap-10">
+		<div class="grid gap-8 lg:grid-cols-[1fr_1.15fr] lg:gap-10">
 			<div class="flex flex-col gap-3">
 				<?php foreach ($frusantos_locations as $frusantos_i => $frusantos_loc) : ?>
 					<button
