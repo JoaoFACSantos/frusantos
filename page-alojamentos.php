@@ -47,10 +47,10 @@ $frusantos_location_pills = [
 		<div class="relative px-6 py-16 sm:py-20 lg:px-[150px]">
 			<div class="mb-5 flex items-center gap-4">
 				<span class="h-[3px] w-14 bg-primary-400"></span>
-				<span class="font-mono text-xs uppercase tracking-[.24em] text-white"><?php esc_html_e('Hospitalidade Frusantos', 'frusantos'); ?></span>
+				<span class="font-mono text-xs uppercase tracking-[.24em] text-white"><?php esc_html_e('Hospitalidade', 'frusantos'); ?></span>
 			</div>
 			<h1 class="max-w-xl text-4xl leading-[1.05] text-primary-400 sm:text-6xl lg:text-[68px] lg:leading-[1.05]">
-				<?php esc_html_e('Alojamentos locais Frusantos', 'frusantos'); ?>
+				<?php esc_html_e('Alojamentos locais', 'frusantos'); ?>
 			</h1>
 			<p class="mt-6 max-w-xl text-base leading-relaxed text-white sm:text-lg">
 				<?php esc_html_e('Estadias tranquilas e autênticas, distribuídas por diferentes regiões de Portugal, com o mesmo rigor que definimos no campo.', 'frusantos'); ?>
@@ -89,7 +89,7 @@ $frusantos_location_pills = [
 			<div class="flex flex-wrap items-center justify-between gap-4 border-b border-neutral-200 px-6 py-7 sm:px-10">
 				<div>
 					<p class="eyebrow mb-2"><?php esc_html_e('Alojamento local', 'frusantos'); ?></p>
-					<h2 class="text-2xl leading-tight sm:text-3xl"><?php esc_html_e('Flôr da Távora', 'frusantos'); ?></h2>
+					<h2 class="text-2xl leading-tight sm:text-3xl"><?php esc_html_e('Flôr do Távora', 'frusantos'); ?></h2>
 				</div>
 				<div class="flex flex-wrap gap-2.5">
 					<?php foreach ($frusantos_location_pills as $frusantos_pill) : ?>
@@ -125,7 +125,7 @@ $frusantos_location_pills = [
 							printf(
 								/* translators: %s: nome do alojamento em destaque */
 								esc_html__('Situado na tranquila aldeia de Vila da Ponte, no concelho de Sernancelhe, o %s é o local ideal para quem procura descansar, desligar da rotina e aproveitar o melhor da Beira Alta de Portugal.', 'frusantos'),
-								'<strong class="font-semibold text-ink">' . esc_html__('Alojamento Flor da Távora', 'frusantos') . '</strong>'
+								'<strong class="font-semibold text-ink">' . esc_html__('Alojamento Flôr do Távora', 'frusantos') . '</strong>'
 							);
 							?>
 						</p>
@@ -136,7 +136,7 @@ $frusantos_location_pills = [
 							printf(
 								/* translators: %s: nome do alojamento em destaque */
 								esc_html__('Se procura um lugar onde possa verdadeiramente descansar e sentir-se em casa, o %s é a escolha certa.', 'frusantos'),
-								'<strong class="font-semibold text-ink">' . esc_html__('Alojamento Flor da Távora', 'frusantos') . '</strong>'
+								'<strong class="font-semibold text-ink">' . esc_html__('Alojamento Flôr do Távora', 'frusantos') . '</strong>'
 							);
 							?>
 						</p>
@@ -178,7 +178,7 @@ $frusantos_location_pills = [
 						<div class="mt-1 flex flex-wrap gap-3">
 							<a href="mailto:reservas@frusantos.com" class="btn-primary"><?php esc_html_e('Pedir reserva', 'frusantos'); ?></a>
 							<a
-								href="https://maps.google.com/maps?q=alojamento%20local%20flor%20da%20tavora"
+								href="https://maps.google.com/maps?q=alojamento%20local%20flor%20do%20tavora"
 								target="_blank"
 								rel="noopener"
 								class="btn border border-neutral-300 text-ink transition duration-250 hover:border-slate"
@@ -192,7 +192,7 @@ $frusantos_location_pills = [
 					<p class="mb-3.5 font-mono text-xs uppercase tracking-[.16em] text-secondary-500"><?php esc_html_e('Coordenadas GPS: 40.915983, -7.514198', 'frusantos'); ?></p>
 					<div class="overflow-hidden rounded-theme">
 						<iframe
-							src="https://maps.google.com/maps?q=alojamento%20local%20flor%20da%20tavora&t=m&z=11&output=embed&iwloc=near"
+							src="https://maps.google.com/maps?q=alojamento%20local%20flor%20do%20tavora&t=m&z=11&output=embed&iwloc=near"
 							title="<?php esc_attr_e('Mapa do Alojamento Local Flôr do Távora', 'frusantos'); ?>"
 							class="h-[300px] w-full border-0 sm:h-[340px]"
 							loading="lazy"

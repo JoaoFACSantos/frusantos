@@ -58,7 +58,6 @@ function initSearchModal() {
   const toggle = document.querySelector('[data-search-toggle]');
   const panel = document.querySelector('[data-search-panel]');
   const card = panel?.querySelector('[data-search-card]');
-  const backdrop = panel?.querySelector('[data-search-backdrop]');
   const closeButton = panel?.querySelector('[data-search-close]');
   if (!toggle || !panel || !card) return;
 
@@ -95,7 +94,16 @@ function initSearchModal() {
 
   toggle.addEventListener('click', () => (isOpen() ? close() : open()));
   closeButton?.addEventListener('click', close);
-  backdrop?.addEventListener('click', close);
+
+  // O wrapper que centra o cartão cobre o ecrã todo (flex + min-h-full)
+  // e fica por cima do fundo escuro na ordem do DOM — clicar na área
+  // "vazia" à volta do cartão acerta nesse wrapper, não no elemento do
+  // fundo, por isso um listener só no fundo nunca disparava. Em vez
+  // disso, o painel inteiro fecha sempre que o clique não for dentro do
+  // cartão (cobre o fundo escuro e essa área vazia por igual).
+  panel.addEventListener('click', (e) => {
+    if (!card.contains(e.target)) close();
+  });
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') close();
