@@ -439,6 +439,36 @@ function initContactForm() {
   });
 }
 
+/**
+ * Seletor de instalação (page-contactos.php) — ao contrário de initTabs(),
+ * não há um painel por instalação: as três só têm um cartão de mapa
+ * partilhado à direita, cuja legenda, link "Abrir no Maps" e iframe mudam
+ * consoante o botão selecionado.
+ */
+function initContactLocations() {
+  const buttons = document.querySelectorAll('[data-location-button]');
+  if (!buttons.length) return;
+
+  const label = document.querySelector('[data-location-label]');
+  const mapsLink = document.querySelector('[data-location-maps-link]');
+  const embed = document.querySelector('[data-location-embed]');
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      buttons.forEach((btn) => {
+        const isActive = btn === button;
+        btn.setAttribute('aria-pressed', String(isActive));
+        btn.classList.toggle('border-primary-400', isActive);
+        btn.classList.toggle('border-neutral-200', !isActive);
+      });
+
+      if (label) label.textContent = button.dataset.locLabel;
+      if (mapsLink) mapsLink.href = button.dataset.locMaps;
+      if (embed) embed.src = button.dataset.locEmbed;
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initToggle('[data-menu-toggle]', '[data-menu-panel]');
@@ -448,5 +478,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initTabs();
   initShopPage();
   initContactForm();
+  initContactLocations();
   initLanguageSwitcher();
 });

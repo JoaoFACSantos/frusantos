@@ -190,51 +190,51 @@ $frusantos_locations = [
 				<?php foreach ($frusantos_locations as $frusantos_i => $frusantos_loc) : ?>
 					<button
 						type="button"
-						role="tab"
-						aria-controls="contact-panel-<?php echo esc_attr($frusantos_loc['id']); ?>"
-						aria-selected="<?php echo 0 === $frusantos_i ? 'true' : 'false'; ?>"
-						data-tab-button
-						data-tab-group="instalacoes"
-						data-tab-target="contact-panel-<?php echo esc_attr($frusantos_loc['id']); ?>"
-						class="rounded-theme border px-5 py-4 text-left transition duration-250 <?php echo 0 === $frusantos_i ? 'border-slate bg-slate text-white' : 'border-neutral-200 bg-white text-ink hover:border-slate'; ?>"
+						aria-pressed="<?php echo 0 === $frusantos_i ? 'true' : 'false'; ?>"
+						data-location-button
+						data-loc-label="<?php echo esc_attr($frusantos_loc['label']); ?>"
+						data-loc-maps="<?php echo esc_url($frusantos_loc['maps']); ?>"
+						data-loc-embed="<?php echo esc_url($frusantos_loc['embed']); ?>"
+						class="rounded-theme border-2 bg-white px-5 py-4 text-left transition duration-250 <?php echo 0 === $frusantos_i ? 'border-primary-400' : 'border-neutral-200 hover:border-slate'; ?>"
 					>
 						<span class="flex items-center justify-between gap-3 text-xs font-bold uppercase tracking-[.14em]">
-							<span><?php echo esc_html($frusantos_loc['label']); ?></span>
-							<span class="<?php echo 0 === $frusantos_i ? 'text-primary-300' : 'text-neutral-400'; ?>"><?php echo esc_html($frusantos_loc['region']); ?></span>
+							<span class="text-secondary-500"><?php echo esc_html($frusantos_loc['label']); ?></span>
+							<span class="text-neutral-400"><?php echo esc_html($frusantos_loc['region']); ?></span>
 						</span>
-						<span class="mt-2.5 block text-[15px] font-medium leading-relaxed <?php echo 0 === $frusantos_i ? 'text-white' : 'text-neutral-700'; ?>"><?php echo wp_kses_post($frusantos_loc['address']); ?></span>
+						<span class="mt-2.5 block text-[15px] font-medium leading-relaxed text-ink"><?php echo wp_kses_post($frusantos_loc['address']); ?></span>
+						<span class="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-neutral-600">
+							<?php foreach ($frusantos_loc['phones'] as $frusantos_phone) : ?>
+								<span><?php echo esc_html($frusantos_phone); ?> *</span>
+							<?php endforeach; ?>
+						</span>
+						<span class="mt-2.5 block font-mono text-xs uppercase tracking-[.1em] text-secondary-500">GPS <?php echo esc_html($frusantos_loc['gps']); ?></span>
 					</button>
 				<?php endforeach; ?>
 			</div>
 
-			<div class="flex flex-col gap-5">
-				<?php foreach ($frusantos_locations as $frusantos_i => $frusantos_loc) : ?>
-					<div
-						role="tabpanel"
-						data-tab-panel
-						data-tab-group="instalacoes"
-						id="contact-panel-<?php echo esc_attr($frusantos_loc['id']); ?>"
-						class="<?php echo 0 === $frusantos_i ? '' : 'hidden'; ?> overflow-hidden rounded-theme border border-neutral-200 bg-white shadow-soft"
-					>
-						<div class="flex flex-wrap items-center justify-between gap-4 px-6 py-5">
-							<div class="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-sm text-neutral-600">
-								<?php foreach ($frusantos_loc['phones'] as $frusantos_phone) : ?>
-									<a href="tel:<?php echo esc_attr(str_replace(' ', '', $frusantos_phone)); ?>" class="font-semibold text-ink transition duration-250 hover:text-secondary-500"><?php echo esc_html($frusantos_phone); ?></a>
-								<?php endforeach; ?>
-								<span class="font-mono text-xs uppercase tracking-[.1em] text-secondary-500">GPS <?php echo esc_html($frusantos_loc['gps']); ?></span>
-							</div>
-							<a href="<?php echo esc_url($frusantos_loc['maps']); ?>" target="_blank" rel="noopener" class="btn border border-neutral-300 text-ink transition duration-250 hover:border-slate">
-								<?php esc_html_e('Abrir no Maps', 'frusantos'); ?>
-							</a>
-						</div>
-						<iframe
-							src="<?php echo esc_url($frusantos_loc['embed']); ?>"
-							title="<?php echo esc_attr(sprintf(/* translators: %s: nome da instalação */ __('Mapa — %s', 'frusantos'), $frusantos_loc['label'])); ?>"
-							class="h-[320px] w-full border-0 sm:h-[380px]"
-							loading="lazy"
-						></iframe>
+			<div class="flex flex-col overflow-hidden rounded-theme border border-neutral-200 bg-white shadow-soft">
+				<div class="flex flex-wrap items-center justify-between gap-4 px-6 py-5">
+					<div>
+						<p class="mb-1.5 text-xs font-bold uppercase tracking-[.16em] text-neutral-400"><?php esc_html_e('A ver no mapa', 'frusantos'); ?></p>
+						<p class="text-lg font-bold text-ink" data-location-label><?php echo esc_html($frusantos_locations[0]['label']); ?></p>
 					</div>
-				<?php endforeach; ?>
+					<a
+						href="<?php echo esc_url($frusantos_locations[0]['maps']); ?>"
+						target="_blank"
+						rel="noopener"
+						data-location-maps-link
+						class="btn border border-neutral-300 text-ink transition duration-250 hover:border-slate"
+					>
+						<?php esc_html_e('Abrir no Maps', 'frusantos'); ?>
+					</a>
+				</div>
+				<iframe
+					data-location-embed
+					src="<?php echo esc_url($frusantos_locations[0]['embed']); ?>"
+					title="<?php esc_attr_e('Mapa das instalações Frusantos', 'frusantos'); ?>"
+					class="h-[320px] w-full flex-1 border-0 sm:h-[380px]"
+					loading="lazy"
+				></iframe>
 			</div>
 		</div>
 	</section>
