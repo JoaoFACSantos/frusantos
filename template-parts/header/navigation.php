@@ -94,34 +94,41 @@
 	</div>
 </div>
 
-<div id="site-search-panel" class="hidden absolute inset-x-0 top-full border-b border-neutral-200 bg-surface/98 shadow-soft backdrop-blur" data-search-panel>
-	<button
-		type="button"
-		class="absolute right-6 top-6 text-neutral-400 transition duration-250 hover:text-ink lg:right-[150px]"
-		data-search-close
-	>
-		<span class="sr-only"><?php esc_html_e('Fechar', 'frusantos'); ?></span>
-		<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-			<path stroke-linecap="round" d="M6 6l12 12M18 6 6 18" />
-		</svg>
-	</button>
+<div id="site-search-panel" class="hidden fixed inset-0 z-50 opacity-0 transition-opacity duration-200" data-search-panel>
+	<div class="absolute inset-0 bg-ink/70 backdrop-blur-sm" data-search-backdrop></div>
 
-	<form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="mx-auto flex max-w-2xl items-center gap-5 px-6 py-14 lg:px-[150px]">
-		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="shrink-0 text-primary-500" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path stroke-linecap="round" d="m20 20-3.2-3.2" /></svg>
-		<label class="sr-only" for="site-search-input"><?php esc_html_e('Pesquisar', 'frusantos'); ?></label>
-		<input
-			type="search"
-			id="site-search-input"
-			name="s"
-			placeholder="<?php esc_attr_e('Pesquisar no site…', 'frusantos'); ?>"
-			class="w-full border-0 border-b-2 border-neutral-200 bg-transparent pb-2 text-2xl font-light normal-case tracking-normal text-ink shadow-none placeholder:text-neutral-400 focus:border-primary-400 focus:outline-none focus:ring-0"
-			autocomplete="off"
+	<div class="relative flex min-h-full items-start justify-center px-6 pt-[16vh]">
+		<div
+			data-search-card
+			class="w-full max-w-xl -translate-y-3 scale-95 rounded-2xl bg-white opacity-0 shadow-2xl transition duration-200 ease-out"
 		>
-		<button type="submit" class="shrink-0 text-neutral-400 transition duration-250 hover:text-primary-600">
-			<span class="sr-only"><?php esc_html_e('Pesquisar', 'frusantos'); ?></span>
-			<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-				<path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6" />
-			</svg>
-		</button>
-	</form>
+			<form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="flex items-center gap-4 px-6 py-5">
+				<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="shrink-0 text-primary-500" aria-hidden="true">
+					<circle cx="11" cy="11" r="7" />
+					<path stroke-linecap="round" d="m20 20-3.2-3.2" />
+				</svg>
+				<label class="sr-only" for="site-search-input"><?php esc_html_e('Pesquisar', 'frusantos'); ?></label>
+				<input
+					type="search"
+					id="site-search-input"
+					name="s"
+					placeholder="<?php esc_attr_e('Pesquisar no site…', 'frusantos'); ?>"
+					class="w-full border-0 bg-transparent p-0 text-lg normal-case tracking-normal text-ink shadow-none placeholder:text-neutral-400 focus:outline-none focus:ring-0"
+					autocomplete="off"
+				>
+				<button type="submit" class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary-400 text-white transition duration-250 hover:bg-primary-500">
+					<span class="sr-only"><?php esc_html_e('Pesquisar', 'frusantos'); ?></span>
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6" />
+					</svg>
+				</button>
+				<button type="button" class="shrink-0 text-neutral-400 transition duration-250 hover:text-ink" data-search-close>
+					<span class="sr-only"><?php esc_html_e('Fechar', 'frusantos'); ?></span>
+					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+						<path stroke-linecap="round" d="M6 6l12 12M18 6 6 18" />
+					</svg>
+				</button>
+			</form>
+		</div>
+	</div>
 </div>

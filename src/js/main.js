@@ -49,19 +49,56 @@ function initToggle(toggleSelector, panelSelector) {
 }
 
 /**
- * Botão de fechar dentro do painel de pesquisa (ver initToggle acima) —
- * separado porque initToggle só liga UM botão a UM painel, e a pesquisa
- * já tem o ícone da barra a abrir o painel.
+ * Pesquisa (desktop) — modal centrado com fundo escurecido, em vez do
+ * initToggle() genérico usado no menu mobile: aqui há animação de
+ * entrada/saída (opacidade + escala do cartão) e fecha ao clicar no
+ * fundo escuro ou premir Esc, não só pelo ícone/botão de fechar.
  */
-function initSearchClose() {
-  const closeButton = document.querySelector('[data-search-close]');
-  const panel = document.querySelector('[data-search-panel]');
+function initSearchModal() {
   const toggle = document.querySelector('[data-search-toggle]');
-  if (!closeButton || !panel) return;
+  const panel = document.querySelector('[data-search-panel]');
+  const card = panel?.querySelector('[data-search-card]');
+  const backdrop = panel?.querySelector('[data-search-backdrop]');
+  const closeButton = panel?.querySelector('[data-search-close]');
+  if (!toggle || !panel || !card) return;
 
-  closeButton.addEventListener('click', () => {
-    panel.classList.add('hidden');
-    toggle?.setAttribute('aria-expanded', 'false');
+  function isOpen() {
+    return toggle.getAttribute('aria-expanded') === 'true';
+  }
+
+  function open() {
+    panel.classList.remove('hidden');
+    toggle.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('overflow-hidden');
+
+    // Duas classes mudadas em frames separados para o browser animar a
+    // transição em vez de saltar logo para o estado final (remover
+    // "hidden" e mudar a opacidade no mesmo frame não anima nada).
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        panel.classList.remove('opacity-0');
+        card.classList.remove('opacity-0', 'scale-95', '-translate-y-3');
+      });
+    });
+
+    panel.querySelector('input')?.focus();
+  }
+
+  function close() {
+    if (!isOpen()) return;
+    toggle.setAttribute('aria-expanded', 'false');
+    panel.classList.add('opacity-0');
+    card.classList.add('opacity-0', 'scale-95', '-translate-y-3');
+    document.body.classList.remove('overflow-hidden');
+    window.setTimeout(() => panel.classList.add('hidden'), 200);
+  }
+
+  toggle.addEventListener('click', () => (isOpen() ? close() : open()));
+  closeButton?.addEventListener('click', close);
+  backdrop?.addEventListener('click', close);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') close();
   });
 }
 
@@ -369,8 +406,7 @@ function initLanguageSwitcher() {
 document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initToggle('[data-menu-toggle]', '[data-menu-panel]');
-  initToggle('[data-search-toggle]', '[data-search-panel]');
-  initSearchClose();
+  initSearchModal();
   initHeaderScroll();
   initHeaderOffset();
   initTabs();
